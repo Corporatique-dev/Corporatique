@@ -1,7 +1,5 @@
 package core;
 
-import plugins.*;
-
 /**
  * Main launcher of the program, list the plugins, their usage and options
  * Redirects to the plugins main, using a config file to do so, sending command
@@ -14,7 +12,7 @@ import plugins.*;
 public class Corporatique {
 
 	public static void main(String[] args) {
-		Test.ClassfromName();
+		//Test.ClassfromName();
 		Test.Install();
 		
 	}

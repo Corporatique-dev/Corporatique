@@ -45,6 +45,7 @@ public class PDF extends Plugins {
 
 	@Override
 	public String toString() {
-		return "salut je suis la classe " + this.getClass().getName();
+		return "Bonjour je suis le pdf mon nom est + "
+				+ this.getClass().getName();
 	}
 }

@@ -8,6 +8,7 @@ import java.io.File;
 	author="Fati CHEN",
 	dependencies="none",
 	extensions="none")
+
 public abstract class Plugins {
 	protected File file_in;
 	protected File file_out;
@@ -37,6 +38,6 @@ public abstract class Plugins {
 	}
 	
 	public String toString(){
-		return "salut je suis "+this.getClass().getName();
+		return "salut je suis plugin mon nom est : " + this.getClass().getName();
 	}
 }

@@ -25,9 +25,19 @@ public class Test {
 
 	public static void Install() {
 		System.out.println("-========-Test Installation");
-		File fl = new File(
-				"C:\\Users\\Fati\\Documents\\Eclipse\\workspace\\Corporatique\\src\\plugins\\PDF\\PDF.java");
-		Install.install(fl);
+		Scanner sc = new Scanner(System.in);
+		int i = sc.nextInt();
+		File fl;
+		if (i == 1)
+			fl = new File(
+					"C:\\Users\\Fati\\Documents\\Eclipse\\workspace\\Corporatique\\PDF.class");
+		else
+			fl = new File(
+					"C:\\Users\\stardisblue\\Desktop\\Eclipse\\Workspace\\Corporatique\\PDF.class");
+		Install j = new Install();
+		j.install(fl);
+
+		sc.close();
 
 	}
 }
