@@ -1,0 +1,1173 @@
+
+
+ 
+ 
+
+ 
+
+ 
+
+ 
+
+Rapport de projet tuteuré – Semestre 2 
+ 
+
+Développement d’un site socio-professionnel de l’IUT 
+
+ 
+
+Réalisé par 
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - 
+
+Axel CHEVRIER - Loris NORSIC 
+ 
+
+Sous la direction de 
+
+Myriam Gelsomino 
+ 
+
+Année universitaire de 2013-2014  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 2 sur 27  
+
+ 
+
+  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 3 sur 27  
+
+Tables des matières 
+
+ 
+
+1. Introduction ................................................................................................................ 7 
+
+2. Analyse ....................................................................................................................... 8 
+
+2.1. Analyse de l’existant ........................................................................................... 8 
+
+2.2. Analyse du besoin ............................................................................................. 11 
+
+2.3. Backlog de sprint* ............................................................................................ 14 
+
+2.3.1. Backlog du sprint 1 ........................................................................................ 14 
+
+2.3.2. Backlog du sprint 2 ........................................................................................ 15 
+
+2.3.3. Backlog du sprint 3 ........................................................................................ 15 
+
+2.3.4. Backlog du sprint 4 ........................................................................................ 16 
+
+3. Rapport technique .................................................................................................... 17 
+
+3.1. Présentation du fonctionnement de Joomla ...................................................... 17 
+
+3.2. Extensions installées ......................................................................................... 18 
+
+3.3. Fonctionnalités implémentées ........................................................................... 19 
+
+4. Rapport d’activité ..................................................................................................... 21 
+
+4.1. Analyse de l’avancement du projet : le Burn up chart du produit .................... 21 
+
+4.2. Analyse de la vélocité de l’équipe : graphique de vélocité ............................... 23 
+
+5. Conclusion ................................................................................................................ 25 
+
+ 
+
+  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 4 sur 27  
+
+Glossaire 
+
+ 
+
+ 
+
+Les termes définis dans ce glossaire sont identifiables dans le corps du texte au moyen 
+
+d’un astérisque (*). 
+
+Vocabulaire technique 
+
+Joomla! : Système de Gestion de Contenu utilisé par l’IUT, que nous appelons Joomla dans le 
+
+rapport. 
+
+Template : Design du site. 
+
+Plugin, module, extension : Composante additionnelle à Joomla. 
+
+Panel d’administration : Interface de contrôle du site accessible seulement par les 
+
+Administrateurs 
+
+Site statique: Site dont le contenu ne varie pas en fonction des caractéristiques de la demande, 
+
+l’utilisateur ne peut pas interagir avec le site, il ne peut que le consulter. 
+
+Vocabulaire propre à la gestion Agile 
+
+Burn up chart : Le Burn up chart est un graphique qui montre l’évolution d’un projet de manière 
+
+ascendante. 
+
+Burn down chart : Le Burn down chart est un graphique qui montre l’évolution d’un projet de 
+
+manière descendante. 
+
+Effort : C’est la difficulté d’une tâche, le temps qu’elle prendra ; elle n’est pas toujours corrélée 
+
+à la valeur de la tâche (ce que ça apporte au client). 
+
+Gestion Agile : Ensemble de méthodes visant à réduire le cycle de vie d’un projet en 
+
+développant une version minimale, puis en intégrant les fonctionnalités par un processus itératif 
+
+basé sur une écoute client et des tests tout au long du cycle de développement. L'objectif étant de 
+
+satisfaire au mieux toutes les demandes du client tout en facilitant le travail de développement : 
+
+ici les relations avec le client reposeront sur une collaboration et non sur un engagement 
+
+contractuel. 
+
+Feed-back : cf. rétrospective 
+
+Itération : Une itération au sens Agile est une ”boite de temps” ou “Timebox” dont la durée: 
+
+? varie d'un projet à l'autre, de 1 semaine à 4 semaines, rarement plus 
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 5 sur 27  
+
+? est en principe fixe sur la durée du projet 
+
+Product Owner : Le Propriétaire du produit (Product Owner) est le représentant des clients et 
+
+des utilisateurs. Il possède une vision complète du produit, de ce à quoi le produit doit ressembler 
+
+et ce qu’il doit comporter. 
+
+Product Backlog : Est la liste priorisée des fonctionnalités, il contient une courte description de 
+
+chacune de ces fonctionnalité. 
+
+Rétrospective : Analyse en groupe des points positifs et négatifs du sprint précédent, et 
+
+proposition d’améliorations pour le sprint suivant. 
+
+Scrum master : Le Scrum Master est responsable de la compréhension, de l'adhérence et de la 
+
+mise en œuvre de la méthode. C’est lui qui est en charge d’assurer un environnement de travail 
+
+agréable pour l’ensemble des membres de l’équipe. 
+
+Sprint : Un sprint est une durée pendant laquelle toutes les fonctionnalités doivent être 
+
+implémentées pour la prochaine réunion de pilotage.  
+
+Users Stories : Une user story est une fonctionnalité à implémenter, elle est traité dans un Sprint. 
+
+  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 6 sur 27  
+
+Tables des Figures 
+
+ 
+
+Figure 1 (Page d’accueil du site du réseau social Polytech-Connect) .................................. 8 
+
+Figure 2 (Annuaire des anciens étudiants pour pouvoir les contacter et regarder leur 
+
+parcours) ........................................................................................................................................... 9 
+
+Figure 3 (Les différents réseaux sociaux associés à ce réseau Polytech) ............................. 9 
+
+Figure 4 (Page d’accueil du réseau social Carnet2) ........................................................... 10 
+
+Figure 5 (Page de groupe avec tous les boutons de recherche (tiret en rouge)) ................. 11 
+
+Figure 6 (Importation CV sur Viadeo très simple et rapide (beaucoup de format pris en 
+
+compte !)) ....................................................................................................................................... 12 
+
+Figure 7 (Product Backlog ou Backlog priorisé) ............................................................... 13 
+
+Figure 8 (Exemple d’un de nos Trello qui nous ont servis pour nos backlogs) ................. 14 
+
+Figure 9 (présentation d'un module) ................................................................................... 17 
+
+Figure 10 (Vue d’ensemble des différents éléments de Joomla : thème, Extension, Plugin 
+
+et les Modules) ............................................................................................................................... 18 
+
+Figure 11 (Burn up Chart) .................................................................................................. 21 
+
+Figure 12 (Burn down chart) .............................................................................................. 22 
+
+Figure 13 (Graphique de vélocité) ..................................................................................... 23 
+
+  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 7 sur 27  
+
+ 
+
+1. Introduction 
+
+ Le département Informatique de l'IUT possède son propre intranet proposant plusieurs 
+
+fonctionnalités y compris l'information sur la vie du département et l'aide pédagogique. 
+
+Actuellement, les outils pédagogiques proposés sont surtout orientés vers la gestion de projet 
+
+avec un site dédié à ce sujet. Il existe aussi un espace consacré aux stages qui met à disposition 
+
+des documents informatifs. 
+
+Toutefois, cet espace est statique*, il ne permet aucune interaction entre les différents 
+
+utilisateurs. Il est d'ailleurs fermé aux anciens étudiants qui pourraient avoir envie d'accéder à 
+
+certaines informations telles que des événements proposés par l'IUT. Il n'y a aucune possibilité de 
+
+consulter le profil des membres ni d'accéder aux informations les concernant. Notre projet 
+
+consiste en la construction d'un réseau-social professionnel qui permettra en plus de mettre en 
+
+relation les utilisateurs entre eux, la gestion des profils, des événements ainsi que des offres de 
+
+stages. 
+
+Après avoir analysé au préalable les besoins du commanditaire et les avoir défini en 
+
+fonctionnalités précises, nous vous présenterons dans le rapport technique les choix des plugins 
+
+utilisés pour répondre aux fonctionnalités demandées. De même que nous mettrons à disposition 
+
+un manuel d'utilisation pour l'administrateur du réseau socio-professionnel. Nous terminerons par 
+
+une rétrospective générale de l'ensemble du projet. 
+
+ 
+
+  
+
+  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 8 sur 27  
+
+ 
+
+2. Analyse 
+
+2.1. Analyse de l’existant 
+
+ Dans le cadre de ce projet et pour avoir une vision plus précise de ce que nous allons 
+
+devoir faire, nous avons effectué une analyse de ce qui était déjà présent sur le marché des 
+
+réseaux sociaux étudiants. Nous avons donc pu constater des points positifs et négatifs quant à 
+
+l'ergonomie ou encore la facilité d'utilisation des sites étudiés. 
+
+Les sites dans ce genre (communautaires étudiants) sont nombreux sur la toile mais nous 
+
+en avons sélectionné quelque uns : 
+
+Polytech Connect, est le premier que nous avons analysé.  
+
+ 
+
+Figure 1 (Page d’accueil du site du réseau social Polytech-Connect) 
+
+Après un parcours rapide sur le site on remarque tout de suite que ce dernier est lent et 
+
+qu'il possède peut de fonctionnalités. En effet le temps de chargement de la page est bien plus 
+
+élevé que la moyenne et ceci nous parais gênant pour un site qui vise les milieux socio-
+
+professionnel (sobre et efficace). L’absence de messagerie instantanée se fait sentir si l'on veut 
+partager rapidement des informations avec les autres membres : nous avons donc choisis 
+
+d'explorer cette piste pour notre projet. Bien que ces défauts soit gênant au première abord, nous 
+
+remarquons vite que le contact d'anciens étudiants,  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 9 sur 27  
+
+ 
+
+Figure 2 (Annuaire des anciens étudiants pour pouvoir les contacter et regarder leur parcours) 
+
+Les nombreux contacts et liens vers d'autres ressources (autres réseaux Polytech et les 
+
+partenaires) ou encore une liste des événements sont autant d'éléments qui nous donnent pas mal 
+
+d'idées pour la conception de notre propre site. 
+
+ 
+
+Figure 3 (Les différents réseaux sociaux associés à ce réseau Polytech) 
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 10 sur 27  
+
+Côtés interface, nous avons remarqué que le site était produit sous Joomla (le CMS que 
+
+nous utilisons pour notre projet). 
+
+Carnects2 , est le second site que nous avons décidés d'analyser. 
+
+ 
+
+Figure 4 (Page d’accueil du réseau social Carnet2) 
+
+Il s'agit d'un site qui présente les publications (blog, événements, signets) des membres de 
+
+l'université de Paris Descartes. Nous sommes un peu moins dans le cadre d'un réseau social au 
+
+sens propre du terme mais les fonctionnalités sont similaires et permettent les mêmes choses pour 
+
+une présentation différente, il nous a donc paru important de souligner la similitude des sites 
+
+malgré une interface différente. Contrairement au réseau social de Polytech, le site est réactifs et 
+
+plus fluide (rapidité de lancement des pages). Plus intuitifs au premier contact, on constate tout de 
+
+suite la grosse communauté et la mise à jour fréquente au travers des nombreux articles postés et 
+
+des nombreux groupes disponibles.  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 11 sur 27  
+
+ 
+
+Figure 5 (Page de groupe avec tous les boutons de recherche (tiret en rouge)) 
+
+Ces points positifs, qui auront été une source d'inspiration (fonctionnalité et réactivité) 
+
+pour notre propre site, cachent tout de même certains défauts. Bien que le nombre de groupes soit 
+
+un bon point, nous avons regretté l’absence d’annuaire d'élèves qui auraient permis une meilleure 
+recherche pour les professionnels. Comme pour le site de Polytech, nous regrettons l’absence de 
+messagerie « instantanée ». 
+
+Par la suite nous avons regardé plusieurs site mais ils ressemblent tous à un des deux 
+
+précédemment analysé avec les mêmes défauts. Il ressort donc des points positifs à approfondir 
+
+pour notre projet et des erreurs à ne pas reproduire. 
+
+2.2. Analyse du besoin 
+
+Après une réunion pour savoir la vision du commanditaire nous en avons ressortis que le 
+
+but était avant tout de mettre en relation les utilisateurs qui ici ont été identifié comme : Étudiant, 
+
+Ancien étudiant, Professeur et l'administrateur ou les administrateurs du site. 
+
+ 
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 12 sur 27  
+
+ Pour répondre à cela, nous avons fait une liste d’éléments important pour le contact intra-
+
+site, le plus pertinent était la mise en place d’une messagerie interne. Nous sommes donc partis 
+
+sur le côté contact et visibilité d’information pour notre site. 
+
+ On a pu s’inspirer de la messagerie de Facebook qui est selon nous un très bon exemple 
+
+bien développé et surtout bien fonctionnel et simple d’utilisation (tout le monde connait cette 
+
+messagerie). Nous nous sommes inspirés aussi des sites tels que Viadeo qui permettent 
+
+d’importer un CV et de mettre à jours ces informations automatiquement et gérer leur visibilité 
+
+directement sur le site. 
+
+ 
+
+Figure 6 (Importation CV sur Viadeo très simple et rapide (beaucoup de format pris en compte !)) 
+
+Nous avons donc précédemment fait ressortir quatre utilisateurs différents : Étudiant, 
+
+Ancien étudiant, Professeur et l'Administrateur ou les Administrateurs du site. C’est au travers 
+
+d’un Product backlog* (backlog priorisé) que nous avons fait ressortir ces utilisateurs et ce qu’ils 
+
+pouvaient faire ou non sur notre site. 
+
+Les user stories* sont classé de 1 à 5, sachant que 1 est la tâche prioritaire. 
+
+  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 13 sur 27  
+
+Les tâches sont: 
+
+ 
+
+Figure 7 (Product Backlog ou Backlog priorisé) 
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 14 sur 27  
+
+2.3. Backlog de sprint* 
+
+Pour faire ces backlog et avoir une bonne organisation du sprint sans pour autant avoir à 
+
+se contacter via conférence, nous avons utilisé le site Trello qui propose une organisation en ligne 
+
+et gratuite sous forme de vignettes (post-it). 
+
+ 
+
+Figure 8 (Exemple d’un de nos Trello qui nous ont servis pour nos backlogs) 
+
+Dans les tableaux qui vont suivre nous aurons, les story (nom) les utilisateurs concernés 
+
+(croix) la valeur de la story et le point d’effort, de la forme (valeur/point d'effort). Les lignes en 
+
+rouges sont les stories qui n’ont pas été fini lors du sprint ou celles qui ont été abandonnées en 
+
+accord avec le commanditaire. En bleu les story qui viennent du sprint précédent. 
+
+2.3.1. Backlog du sprint 1 
+
+Stories  \  Users Etudiant Ancien Etudiant Professeur Admin 
+
+Validation d’inscription (2/5)    X 
+
+Inscription Ancien étudiants (2/15)  X   
+
+Inscription Etudiant (2/15) X    
+
+Inscription Professeur (2/15)   X  
+
+Me désinscrire (2/10) X X X  
+
+Gestion de son compte (1,5/10)     
+
+ 
+
+  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 15 sur 27  
+
+ 
+
+2.3.2. Backlog du sprint 2 
+
+Stories  \  Users Etudiant Ancien Etudiant Professeur Admin 
+
+Consulter les événements publics (12/5) X X X  
+
+Inviter à un événement (13/10)   X  
+
+Apporter des informations 
+
+supplémentaires à un événement (3/5) 
+
+X X X  
+
+Se désinscrire d’un événement (3/5) X X X  
+
+Accepter une invitation à un événement 
+
+(3/5) 
+
+  X  
+
+Créer un événement (30/10)   X  
+
+Faire une demande d’inscription à un 
+événement (25/10) 
+
+X X X  
+
+ 
+
+2.3.3. Backlog du sprint 3 
+
+Dans ce sprint 3 nous avons eu à améliorer des stories du backlog 2 (en bleu) et une story 
+
+que nous n’avions pas finie (en rouge). 
+
+Stories  \  Users Etudiant Ancien Etudiant Professeur Admin 
+
+Ajouter des catégories aux événements 
+
+(3/5) 
+
+X    
+
+Traduire en français (3/20) X X X X 
+
+Possibilité de poster des offres de stage 
+
+(20/10) 
+
+ X X  
+
+Consulter les offres de stages (13/5) X    
+
+Contacter d’autres utilisateurs (20/40) X X X X 
+
+ 
+
+  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 16 sur 27  
+
+2.3.4. Backlog du sprint 4 
+
+Dans le sprint 4 comme pour le sprint 3 nous avons des reports de stories (en bleu) du 
+
+sprint précédent. 
+
+Stories  \  Users Etudiant Ancien Etudiant Professeur Admin 
+
+Ajouter des couleurs aux catégories 
+
+d’événement (5/1) 
+X X X X 
+
+Contacter d’autres utilisateurs (20/15) X X X X 
+
+Parler avec les autres utilisateurs en 
+
+direct (20/15) 
+
+X X X X 
+
+Traduction du site complet en français 
+
+(10/13) 
+
+X X X X 
+
+Consulter les CV visibles (30/5) X X X  
+
+Créer son CV (40/13) X X  X 
+
+Gérer son CV (15/13) X X   
+
+Ajouter la liste des utilisateurs pour 
+
+tous les utilisateurs (5/3) 
+
+X X X X 
+
+  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 17 sur 27  
+
+ 
+
+3. Rapport technique 
+
+3.1. Présentation du fonctionnement de Joomla 
+
+Noyau Jooma : Modules, composant, Plug-ins, Template 
+
+Joomla est un CMS (Système de Gestion de Contenu) qui permet une gestion facilitée 
+
+ainsi qu’une mise en place rapide d’un site Web complexe. 
+
+Son noyau, c’est à dire, lorsque aucune fonctionnalité n’est implémenté, permet la 
+
+gestion des utilisateurs et des permissions qui leurs sont accordés. Ces utilisateurs appartiennent à 
+
+un groupe défini. De plus il intègre une gestion de pages classés par catégorie dont la vue est 
+
+paramétrable pour un groupe d’utilisateurs.  
+
+Les modules permettent l’affichage de différents 
+
+éléments sur le site, dont la position est définie par le 
+
+Template. La visibilité d’un module doit être définie. Cela 
+
+permet, au-delà du design, de configurer le contenu 
+
+additionnel visible par les utilisateurs ou un groupe 
+
+d’utilisateurs donné.  
+
+Tout ce qui est affiché dans le contenu ne rentre pas 
+
+dans cette catégorie, ce seront donc soit des extensions soit 
+
+des Plug-ins. 
+
+Rentrent dans cette catégorie, le fil d’Ariane, le menu, boite de connexion, etc. Par 
+
+exemple, le menu du site, une fois défini, doit être placé dans un emplacement qu’il occupera sur 
+
+les pages du site. 
+
+ Un Plug-in est une fonctionnalité additionnelle qui remplit une fonction précise et 
+
+définie. Il ne peut fonctionner sans Joomla. Remplit un rôle spécifique dans le fonctionnement du 
+
+site, mais n’est pas indispensable pour le bon fonctionnement du site. 
+
+Par exemple, un diaporama d’images est un Plug-in, car il remplit une fonction précise et 
+
+permet d’implémenter une fonction utile, mais pas indispensable. 
+
+Une extension est un groupe de fonctionnalités : plus précisément, c’est un outil qui 
+
+permet d’accomplir une tâche complexe. Il peut théoriquement fonctionner sans Joomla, qui 
+
+quant à lui va seulement l’exploiter pour augmenter les fonctionnalités du site. Par exemple, 
+
+Community Builder est une extension, car il est entièrement autonome et intègre une gestion du 
+
+contenu qui lui est propre. 
+
+ 
+
+Figure 9 (présentation d'un module) 
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 18 sur 27  
+
+Un Template ou thème en français est le design du site. La couleur, la disposition du 
+
+contenu et des modules. Tout ce que l’utilisateur voit est géré par cette partie de Joomla. Les 
+
+modules et le contenu vont ensuite “peupler” le moule qu’est le design. 
+
+ 
+
+3.2. Extensions installées 
+
+Le Template choisi est YouGrids. Il a été choisi pour son design moderne et d’actualité, 
+
+pour sa facilité de gestion, mais aussi pour sa compatibilité avec tous les navigateurs. De plus, il 
+
+utilise le système Bootstrap qui permet une édition rapide et sans problèmes supplémentaires.  
+
+Bootstrap n’ayant été implémenté qu'à partir de la version 3 de Joomla, il a été nécessaire 
+
+d’installer JBootstrap, un plug-in qui permet l’utilisation d’un Template Bootstrap sur les 
+
+versions de Joomla antérieur. 
+
+Afin de satisfaire le besoin de gérer un réseau social, l’extension Community Builder a 
+
+été choisie. Son principal avantage est le fait qu’il soit gratuit, par rapport à son principal 
+
+concurrent JomSocial. Celui-ci est, en terme de gestion d’un réseau, bien plus puissant et 
+
+Figure 10 (Vue d’ensemble des différents éléments de Joomla : thème, Extension, Plugin et les Modules) 
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 19 sur 27  
+
+complet que la version gratuite de Community Builder (CB), mais sa compatibilité avec 
+
+d’autres extensions n’est pas parfaitement gérée. 
+
+La liste qui suit est la liste des plug-ins additionnels pour Community Builder : 
+
+? cb.bootstrap permet de mettre en place un design Bootstrap pour Community Builder afin 
+
+d’être en accord avec le design du Template 
+
+? pms.mypmspro permet le fonctionnement des autres plug-ins de compatibilité avec 
+
+uddeIM 
+
+? pms.uddeim permet l’envoi de messages via l’extension uddeIM pour CB (plug-in de 
+
+compatibilité) 
+
+? pms.inbox permet d’afficher la boite de réception uddeIM sur son profil (plug-in de 
+
+compatibilité) 
+
+? profilelink permet l’affichage d’un lien sur le profil vers une messagerie privée uddeIM 
+
+(plug-in de compatibilité) 
+
+? dt.deleteme rajoute une option permettant à l’utilisateur de supprimer son compte 
+
+? cb.jevents permet l’intercommunication de CB avec Jevents 
+
+Afin de pouvoir gérer les évènements, les extensions Jevents est utilisée, son principal 
+
+avantage étant le fait qu’elle soit gratuite et entièrement compatible avec CB. 
+
+Jevents ne permettant pas la gestion des invitations à un évènement, RSVP pro, une 
+
+extension de Jevents permet de satisfaire ce besoin. L’extension est payante, mais le site utilise 
+
+une version de développement (version “Beta” avant le lancement officiel) qui elle est gratuite. 
+
+Pour les demandes et offres d’emplois, JsJobs a été celui qui répondait le plus à l’attente 
+
+du client. Car c’est le seul qui permet la gestion des emplois et des CV. 
+
+uddeIM est utilisé pour permettre aux utilisateurs de communiquer entre eux via une 
+
+messagerie. Il a été choisi, car il est entièrement compatible avec CB. 
+
+ Pour chaque Composante additionnelle, un plug-in linguistique a permis de les traduire en 
+
+français. 
+
+3.3. Fonctionnalités implémentées 
+
+Afin de gérer efficacement les utilisateurs, nous les avons subdivisés en trois catégories 
+
+de personnes : 
+
+? Les étudiants 
+
+? Les anciens étudiants 
+
+? Les professeurs 
+
+L’administrateur étant une exception. 
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 20 sur 27  
+
+Le principal problème a été que CB ne permet d’implémenter qu’une seule interface de 
+
+connexion. Par conséquent, tous les utilisateurs remplissaient le même formulaire pour une 
+
+utilisation du site qui allait être complètement différente. 
+
+Par conséquent, un plug-in complémentaire a été développé de façon à pouvoir créer trois 
+
+interfaces de connexions propres à chaque groupe. (cf. Annexe 1) 
+
+Son fonctionnement est simple : il permet, suivant une valeur entrée dans l’URL, de 
+
+diriger l’utilisateur vers un formulaire ne contenant que l’information requise pour un groupe 
+
+donné. Par exemple, pour un étudiant, le champ E-mail n’est pas éditable : il est créé à partir de 
+
+ce qui est donné dans les champs nom et prénom. De ce fait, si l’étudiant s'appelle Jean Dupont, 
+
+son email sera jean.dupont@etud.univ-montp2.fr. 
+
+Malgré cette distinction entre les utilisateurs après leur inscription, ils ne sont pas 
+
+automatiquement ajoutés aux groupes auxquels ils appartiennent. L’administration doit alors, lors 
+
+de la validation de l’utilisateur inscrit, l’ajouter à son groupe. Pour ce faire, il est obligé d'accéder 
+
+au panel d’administration. Cela pose évidemment un problème. Car une fois le site mis en route, 
+
+le panel d’administration ne doit être accédé qu’en cas de problème, tout doit se faire depuis le 
+
+site, même pour l’administrateur. 
+
+Pour remédier à ce problème, nous avons conçu un plug-in CB, qui lors de la validation, 
+
+va mettre l’utilisateur dans le groupe approprié. Son groupe étant transmis en valeur cachée lors 
+
+de l’inscription grâce au plug-in complémentaire cité ci-dessus. 
+
+L’inscription étant un traitement automatique, il est très difficile de le changer à ce 
+
+moment-là. J’ai donc utilisé un déclencheur appelé : onAfterUserRegistration qui est activé lors 
+
+de la validation de l’utilisateur par l’administrateur. Lors de cette validation, il est facile de 
+
+récupérer l’identifiant de l’utilisateur et le groupe auquel il doit appartenir. Je récupère alors ces 
+
+valeurs, vérifie leur validité et modifie la base de données en conséquent. 
+
+Théoriquement parlant, il est possible de prendre le dernier utilisateur inscrit et de 
+
+modifier son groupe dans une base de données, mais il reste un risque dans le cas ou plusieurs 
+
+utilisateurs se sont inscrits en même temps. Le fait de le faire lors de la validation permet de 
+
+connaître l’identité de l’utilisateur à modifier. De ce fait, il est évidemment possible de valider 
+
+plusieurs utilisateurs, qui appartiendront alors à leurs groupes respectifs. 
+
+  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 21 sur 27  
+
+ 
+
+4. Rapport d’activité 
+
+4.1. Analyse de l’avancement du projet : le Burn up chart du produit 
+
+ 
+
+Figure 11 (Burn up Chart) 
+
+Le Burn up chart* en fonction de la valeur métier permet de mieux apprécier 
+
+l’avancement du site pour le client, en effet il se rend mieux compte de la valeur ajoutée au site à 
+
+chaque itération. Il permet aussi au Scrum master* de mieux voir s’il a fait un bon choix dans 
+
+l’ordre du développement. Examinons la courbe pour chaque sprint : 
+
+? Sprint 1 : La valeur métier au sprint 1 est faible, car peu de tâches ont été 
+
+effectuées. C’est dû aux difficultés liées au peu de connaissances du logiciel 
+
+Joomla. 
+
+? Sprint 2 : Nous pouvons voir que la courbe monte rapidement au sprint 2, car la 
+
+valeur métier durant ce sprint est très importante. En effet, elle concerne la gestion 
+
+d’événement. 
+
+? Sprint 3 : L’accroissement de la courbe est moins élevé qu’au sprint 2, car nous 
+
+avons réalisé peu de user stories, durant les vacances et nous en avons raté une. 
+
+? Sprint 4 : Enfin au sprint 4 l’accroissement de la courbe augmente, grâce à une 
+
+valeur métier élevée. Durant ce sprint nous avons réalisé beaucoup de user stories 
+
+dont certaine avec une forte valeur métier. 
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 22 sur 27  
+
+ 
+
+Figure 12 (Burn down chart) 
+
+Le Burn down chart* en fonction des user stories est très utile à l’équipe de 
+
+développement et au Scrum master. Ce graphique permet de se rendre compte du travail qu’il 
+
+reste encore à faire à la fin d’un sprint. Le diagramme est régulièrement mis à jour lors de l’ajout 
+
+de user stories ou de suppression de l’une d’entre elles. Observons l’évolution du graphique en 
+
+fonction des sprints : 
+
+? Sprint 1 : Au sprint 1 il nous restait 19 user stories sur les 25 de départ. La 
+
+connaissance approximative du nombre de user stories nous a permis de mieux 
+
+découpé notre travail, nous avons effectué entre 6 et 7 tâches par sprint. 
+
+? Sprint 2 : Après le sprint 2 il nous restait 12 user stories. Nous avons continué sur 
+
+un bon rythme comme nous l’avions prévue. Les user stories ont toutes été 
+
+validés. 
+
+? Sprint 3 : Nous avons perdu notre allure à ce troisième sprint, car durant les 
+
+vacances nous avons manqué d’organisation et notre travail a perdu en efficacité. 
+
+? Sprint 4 : Finalement, nous avons réussi à finir toutes nos user stories dans les 
+
+temps en rattrapant le retard accumulé au sprint 3.  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 23 sur 27  
+
+4.2. Analyse de la vélocité de l’équipe : graphique de vélocité 
+
+ 
+
+Figure 13 (Graphique de vélocité) 
+
+Avec ce graphique de vélocité, nous pouvons voir que notre valeur d’effort réelle à 
+
+augmenter en fonction du temps, ainsi que notre valeur d’effort estimé. Examinons en détail 
+
+chaque sprint : 
+
+? Sprint 1 : Durant le sprint, nous ne connaissions pas encore Joomla ce qui nous a 
+
+conduit à sous-évaluer notre valeur d’effort, en effet nous pouvons voir sur le 
+
+graphique que nous avions très largement sous-estimé la valeur d’effort du sprint. 
+
+? Sprint 2 : Lors de l’estimation de la valeur d’effort du sprint 2, nous avions mieux 
+
+appréhendé les difficultés liées à Joomla et donc réévalué l’installation des plug-
+
+ins. Or la valeur d’effort réelle s’est révélée moins élevée que celle du sprint 1. 
+
+? Sprint 3 : Nous pouvons voir une diminution de la valeur d’effort entre les sprints 
+
+2 et 3, ce qui découle du fait qu’étant en vacances nous avons effectué moins de 
+
+user stories. Comme au sprint précédent nous avons surévalué la valeur d’effort. 
+
+? Sprint 4 : Le dernier sprint est celui qui comporte la plus grande valeur d’effort, 
+
+car il nous reste les user stories qui n’ont pas été validées aux sprints précédents 
+
+ainsi que la traduction complète du site. Encore une fois, nous avons surévalué la 
+
+valeur d’effort du sprint. 
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 24 sur 27  
+
+Rétrospective générale 
+ Lors de nos réunions nous avons utilisé le planning poker, cela consiste à se réunir et à 
+
+déterminer à partir de cartes de poker la difficulté d’une user story. Plus le nombre est élevé plus 
+
+la tâche est ardue. La révélation des cartes se fait simultanément dans le but de ne pas influencer 
+
+les autres membres du groupe. Cet outil nous a été très utile. En effet, cela nous a permis de 
+
+mieux évaluer la difficulté des tâches et donc de mieux répartir le travail dans le groupe. De plus, 
+
+la connaissance de l’effort nous a permis d’identifier les tâches ayant le meilleur rapport 
+
+valeur/effort, nous avons donc commencé par celles-ci. 
+
+Durant tout le projet, nous avons utilisé le logiciel en ligne Trello. Cet outil aide à la 
+
+répartition des tâches entre les membres du groupe dans un projet. Il s’inspire du management 
+
+visuel, on y retrouve l’aspect concis du Post-it et le côté détaillé d’un cahier des charges 
+
+(description, tâches, tests, membres assignés, pièces jointes, date de rendu). C’est un outil que 
+
+nous avons particulièrement apprécié, son utilisation nous a permis de nous organiser et de 
+
+pouvoir voir l’avancement des autres membres du groupe. De plus, les listes de tâches et de tests 
+
+permettent de vérifier que le travail réalisé correspond aux attentes du client. 
+
+Grâce au cours de gestion de projet, nous avons eu un créneau réservé aux réunions (de 
+
+pilotage et de rétrospective). Ces réunions nous ont permis :  
+
+? De partager le travail en fonction de nos compétences et de nos envies.  
+
+? De communiquer avec le client. 
+
+? De planifier les tâches. 
+
+? De revenir sur les points positifs et négatifs du sprint précédent, et de faire des 
+
+propositions d’améliorations pour les sprints suivants. 
+
+Pour ce projet, nous avons adopté des cycles de développements courts. Cette méthode 
+
+nous a permis d’éviter “l’effet tunnel”* que l’on peut rencontrer dans les cycles développements 
+
+longs. En effet, ce rythme permet d’avoir une meilleure vision de l’état d’avancement du projet et 
+
+les livraisons régulières sont l’occasion de voir avec le client si notre travail correspond à sa 
+
+vision du projet. Dans le cas contraire, il est possible de faire des modifications ou des 
+
+compromis (exemple : la fonctionnalité mail indisponible). 
+
+  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 25 sur 27  
+
+5. Conclusion 
+
+ Les fonctionnalités demandées par le commanditaire ont été, pour la plupart, réalisées. 
+
+En effet, sur le réseau socioprofessionnel ont été implémentées les users stories suivantes : mise 
+
+en relation des utilisateurs, gestion des CV, des profils, la gestion des stages ainsi que des 
+
+événements. Cependant, certaines fonctionnalités n'ont pas été intégrées au réseau social, mais 
+
+pourront néanmoins être ajoutées par la suite. 
+
+ Le projet développé avec le CMS Joomla, nous a demandé un certain temps de 
+
+prise en main, pour l'utilisation globale du CMS, mais aussi des différents plug-ins. En effet au 
+
+début nous avons eu du mal à évaluer précisément l'effort nécessaire au développement de 
+
+chaque fonctionnalité, d'où une mauvaise estimation du premier sprint. 
+
+ Le découpage du temps en sprints d'une période de deux semaines chacun, nous a 
+
+donné une meilleure vision et organisation grâce aux backlogs et l'outil Trello pour les gérer. 
+
+Cette organisation nous a permis d'avoir un feed-back régulier du commanditaire et d'avoir une 
+
+discussion avec elle sur certaines fonctionnalités que nous avons jugé préférable de ne pas 
+
+développer, comme une messagerie par mail par exemple, à cause d'un effort trop important par 
+
+rapport à d'autres fonctionnalités. À la fin de chaque sprint, les users stories retenues en fonction 
+
+de leurs valeurs et de l'effort qu'elles représentaient ont été soit validées, soit rejetées. De cette 
+
+façon, le projet s'enrichissait à chaque sprint de nouvelles fonctionnalités toutes opérationnelles. 
+
+Cela nous a permis, par la même occasion, de reprendre certaines de celles éconduites. 
+
+ Les méthodes agiles utilisées pour gérer ce projet nous ont permis en plus d'une 
+
+bonne organisation de livrer un produit au plus proche de l'attente du commanditaire, qui plus est 
+
+un produit fonctionnel avec la possibilité d'améliorer le réseau. 
+
+  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 26 sur 27  
+
+Sitographie 
+
+ 
+
+ 
+
+http://developer.joomla.org/ Documentation Joomla (mars). 
+
+https://www.joomlapolis.com/support/tuto...plugin-types Développement plug-ins CB (février-
+
+mars) 
+
+http://stackoverflow.com/questions/112...forms Aide formulaires multiples CB (février-mars). 
+
+http://stackoverflow.com Forum d’entraide PHP JavaScript (Tout le temps) 
+
+https://www.joomlapolis.com/support/tutorials/...cb-language Aide à la traduction CB (février). 
+
+http://extensions.joomla.fr/ Téléchargement des Composantes Joomla (Tout le temps). 
+
+http://www.viadeo.com/profile/00214c4ku8a1l0qo Analyse de l’existant sur compte perso. 
+
+http://polytech-connect.com/ Analyse de l’existant : Réseau social de Polytech. 
+
+http://carnets.parisdescartes.fr/ Analyse de l’existant : Réseau social Paris Descartes. 
+
+  
+
+*/ENDPAGE*
+
+Louis BALANDRAS - Maxime CHAPUIS - Fati CHEN - Axel CHEVRIER - Loris NORSIC 
+
+Page 27 sur 27  
+
+Annexe 
+
+ 
+
+ 
+
+https://github.com/stardisblue/plug.plgmyusergroupfield Plugins développés pour CB 
+
+ 
+
+ 
+
+*/ENDPAGE*
