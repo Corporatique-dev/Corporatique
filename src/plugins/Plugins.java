@@ -9,35 +9,20 @@ import java.io.File;
 	dependencies="none",
 	extensions="none")
 
-public abstract class Plugins {
+public interface Plugins {
 	protected File file_in;
 	protected File file_out;
 
-	public void Load(File file_in) {
-		setFileIn(file_in);
-	}
+	public void Load(File file_in) ;
 
-	public void processExtraction() {
-	}
+	public void processExtraction() ;
+	public File getFileIn() ;
 
-	// Getters Setters
-	public File getFileIn() {
-		return file_in;
-	}
+	public File getFileOut() ;
 
-	public File getFileOut() {
-		return file_out;
-	}
-
-	protected void setFileIn(File file_in) {
-		this.file_in = file_in;
-	}
+	protected void setFileIn(File file_in);
 	
-	protected void setFileOut(File file_out){
-		this.file_out = file_out;
-	}
+	protected void setFileOut(File file_out);
 	
-	public String toString(){
-		return "salut je suis plugin mon nom est : " + this.getClass().getName();
-	}
+	public String toString();
 }
