@@ -15,7 +15,7 @@ public interface Plugins {
 
 	/**
 	 * Loading the selected file in the plugin and sets the output file
-	 * (security measures)s
+	 * (security measures)
 	 * 
 	 * @param file_in
 	 *            File to load
