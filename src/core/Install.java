@@ -4,24 +4,27 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+import net.xeoh.plugins.base.Plugin;
 import plugins.*;
 
 public class Install {
 	public void install(File ainstaller) {
+		Plugin pl = new Plugin();
+
 		String plugins = "plugins";
 		String name = (ainstaller.getName().split(".class"))[0];
 		String directory = (this.getClass().getResource("Install.class")
 				.getPath().split(Install.class.getName()))[0]
 				+ plugins + "/" + name + "/";
-		
-		// Crée le chemin 
+
+		// Crée le chemin
 		if ((new File(
 				(this.getClass().getResource("Install.class").getPath()
 						.split(Install.class.getName()))[0]
 						+ plugins
 						+ "/"
 						+ name + "/")).mkdirs())
-			System.out.println( "chemin crée :" + directory);
+			System.out.println("chemin crée :" + directory);
 
 		String fileout = directory + ainstaller.getName();
 		// Affiche le fichier de destination
