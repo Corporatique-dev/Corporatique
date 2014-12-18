@@ -8,14 +8,13 @@ import plugins.*;
 
 public class Install {
     public void install(File toinstall) {
-        //
+        //Setting up the Plugin thing
         PluginManager pm = PluginManagerFactory.createPluginManager();
-
-        // and then one or more of these ..
+        // adding a plugin from a path
         pm.addPluginsFrom(toinstall.toURI());
-
+        // getting the plugin
         Corpoplugins extension = pm.getPlugin(Corpoplugins.class);
-
+        // if it has the annotations
         Pluginspecs specs = p.getClass().getAnnotation(extension.getClass());
 
         System.out.println(specs.name());
