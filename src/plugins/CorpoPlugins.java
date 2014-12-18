@@ -9,7 +9,7 @@ import java.io.File;
 		author = "Fati CHEN",
 		dependencies = "none",
 		extensions = "none")
-public interface Plugins {
+public interface CorpoPlugins {
 	File file_in;
 	File file_out;
 
