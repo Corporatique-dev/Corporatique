@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
-import plugins.CorpoPlugins;
+import plugins.Corpoplugins;
 
 public class ReadXML{
 

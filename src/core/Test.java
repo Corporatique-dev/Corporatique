@@ -3,7 +3,7 @@ package core;
 import java.io.File;
 import java.util.Scanner;
 
-import plugins.CorpoPlugins;
+import plugins.Corpoplugins;
 
 public class Test {
 
@@ -14,7 +14,7 @@ public class Test {
 		System.out.println("-========-Test Classe from String");
 		try {
 			Class<?> cl = Class.forName("plugins.PDF.PDF");
-			CorpoPlugins p = (CorpoPlugins) cl.newInstance();
+			Corpoplugins p = (Corpoplugins) cl.newInstance();
 			System.out.println("--resultat : " + p.toString());
 
 		} catch (ClassNotFoundException | InstantiationException

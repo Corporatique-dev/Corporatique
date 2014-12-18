@@ -5,7 +5,7 @@ import java.io.File;
 import plugins.*;
 
 @Pluginspecs(name = "PDF", version = "1.0.0", description = "Extrait le texte d'un PDF", author = "Fati CHEN", dependencies = { "" }, extensions = { "" })
-public class PDF extends CorpoPlugins {
+public class PDF extends Corpoplugins {
 
 	public PDF() {
 
