@@ -1,10 +1,16 @@
 package core;
 
-import java.io.File;
-
+import Exceptions.PluginIsInstalledException;
 import net.xeoh.plugins.base.PluginManager;
 import net.xeoh.plugins.base.impl.PluginManagerFactory;
-import plugins.*;
+import plugins.Corpoplugins;
+import plugins.Pluginspecs;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 public class Install {
     public void install(File toinstall) {
@@ -15,8 +21,26 @@ public class Install {
         // getting the plugin
         Corpoplugins extension = pm.getPlugin(Corpoplugins.class);
         // if it has the annotations
-        Pluginspecs specs = p.getClass().getAnnotation(extension.getClass());
+        Pluginspecs specs = extension.getClass().getAnnotation(Pluginspecs.class);
 
+        // initialisation of properties
+        Properties prop = new Properties();
+        InputStream input;
+
+        try {
+            input = new FileInputStream("config.properties".replace);
+            prop.load(input);
+
+            if (prop.get(specs.name()) != null) {
+                throw new PluginIsInstalledException();
+            }
+            prop.propertyNames()
+
+        } catch (IOException | PluginIsInstalledException e) {
+            e.printStackTrace();
+        }
+
+        // TODO: delete Test Output specifications
         System.out.println(specs.name());
         System.out.println(specs.version());
         System.out.println(specs.author());
@@ -41,7 +65,7 @@ public class Install {
         // + plugins
         // + "/"
         // + name + "/")).mkdirs())
-        // System.out.println("chemin cr�e :" + directory);
+        // System.out.println("chemin crée :" + directory);
         //
         // String fileout = directory + toinstall.getName();
         // // Affiche le fichier de destination

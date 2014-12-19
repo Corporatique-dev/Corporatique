@@ -2,9 +2,18 @@ package plugins.PDF;
 
 import java.io.File;
 
+import net.xeoh.plugins.base.annotations.PluginImplementation;
+import net.xeoh.plugins.base.annotations.injections.InjectPlugin;
 import plugins.*;
+import plugins.XML.ReadXML;
 
-@Pluginspecs(name = "PDF", version = "1.0.0", description = "Extrait le texte d'un PDF", author = "Fati CHEN", dependencies = { "" }, extensions = { "" })
+@Pluginspecs(
+		name = "PDF",
+		version = "1.0.0",
+		description = "Extrait le texte d'un PDF",
+		author = "Fati CHEN",
+		dependencies = { "" },
+		extensions = { "" })
 public class PDF extends Corpoplugins {
 
 	public PDF() {
