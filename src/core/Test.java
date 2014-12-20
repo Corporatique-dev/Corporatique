@@ -1,43 +1,48 @@
 package core;
 
-import java.io.File;
-import java.util.Scanner;
-
 import plugins.Corpoplugins;
 
+import java.util.Scanner;
+
+/**
+ * Provisory class which allows to test differents components of corporatique
+ *
+ * @author Fati CHEN
+ * @version 1.0
+ */
 public class Test {
 
-	static Scanner sc = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
 
-	// Test du PDF
-	public static void ClassfromName() {
-		System.out.println("-========-Test Classe from String");
-		try {
-			Class<?> cl = Class.forName("plugins.PDF.PDF");
-			Corpoplugins p = (Corpoplugins) cl.newInstance();
-			System.out.println("--resultat : " + p.toString());
+    // Test du PDF
+    public static void ClassfromName() {
+        System.out.println("-========-Test Classe from String");
+        try {
+            Class<?> cl = Class.forName("plugins.PDF.PDF");
+            Corpoplugins p = (Corpoplugins) cl.newInstance();
+            System.out.println("--resultat : " + p.toString());
 
-		} catch (ClassNotFoundException | InstantiationException
-				| IllegalAccessException e) {
-			e.printStackTrace();
-		}
-	}
+        } catch (ClassNotFoundException | InstantiationException
+                | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
 
-	public static void Install() {
-		System.out.println("-========-Test Installation");
-		Scanner sc = new Scanner(System.in);
-		int i = sc.nextInt();
-		File fl;
-		if (i == 1)
-			fl = new File(
-					"C:\\Users\\Fati\\Documents\\Eclipse\\workspace\\Corporatique\\PDF.class");
+    public static void Install() {
+        System.out.println("-========-Test Installation");
+        Scanner sc = new Scanner(System.in);
+        int i = sc.nextInt();
+        //	File fl;
+/*		if (i == 1)
+            fl = new File(
+					"C:\\Users\\Fati\\Documents\\Eclipse\\workspace\\Corporatique\\Doc.class");
 		else
 			fl = new File(
-					"C:\\Users\\stardisblue\\Desktop\\Eclipse\\Workspace\\Corporatique\\PDF.class");
-		Install j = new Install();
-		j.install(fl);
+					"C:\\Users\\stardisblue\\Desktop\\Eclipse\\Workspace\\Corporatique\\PDF.class");*/
+        Install j = new Install();
+        j.installPlugin();
 
-		sc.close();
+        sc.close();
 
-	}
+    }
 }
