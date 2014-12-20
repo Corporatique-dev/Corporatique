@@ -1,44 +1,66 @@
 package core;
 
-import Exceptions.PluginIsInstalledException;
 import net.xeoh.plugins.base.PluginManager;
 import net.xeoh.plugins.base.impl.PluginManagerFactory;
+import net.xeoh.plugins.base.util.uri.ClassURI;
 import plugins.Corpoplugins;
 import plugins.Pluginspecs;
 
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
+import java.util.ArrayList;
 
+/**
+ * Manage the installation of a Corpoplugin.
+ * Will also check the existing plugins to avoid any collisions between plugins.
+ *
+ * @author Fati CHEN
+ */
 public class Install {
-    public void install(File toinstall) {
+
+    /**
+     * Extracts the properties in a [ plugin, format, package ] structure.
+     *
+     * @return String[] properties of the configuration file
+     * @throws IOException
+     */
+    private String[] getConfig() throws IOException {
+        String path = Corporatique.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+
+
+        File config = new File(path + File.separator + ".properties");
+        if (config.createNewFile())
+            return NULL;
+
+        FileReader configFR = new FileReader(config);
+        BufferedReader configBR = new BufferedReader(configFR);
+
+        String line;
+        ArrayList<String> airlines = new ArrayList<>();
+
+        while ((line = configBR.readLine()) != null) {
+            airlines.add(line);
+        }
+        configBR.close();
+
+        String[] configs = new String[airlines.size()];
+        airlines.toArray(configs);
+        return configs;
+    }
+
+    public void installPlugin(/*TODO: File toinstall*/) {
         //Setting up the Plugin thing
         PluginManager pm = PluginManagerFactory.createPluginManager();
         // adding a plugin from a path
-        pm.addPluginsFrom(toinstall.toURI());
+        pm.addPluginsFrom(ClassURI.CLASSPATH);
         // getting the plugin
         Corpoplugins extension = pm.getPlugin(Corpoplugins.class);
+        System.out.println(extension.getClass());
         // if it has the annotations
         Pluginspecs specs = extension.getClass().getAnnotation(Pluginspecs.class);
 
-        // initialisation of properties
-        Properties prop = new Properties();
-        InputStream input;
-
-        try {
-            input = new FileInputStream("config.properties".replace);
-            prop.load(input);
-
-            if (prop.get(specs.name()) != null) {
-                throw new PluginIsInstalledException();
-            }
-            prop.propertyNames()
-
-        } catch (IOException | PluginIsInstalledException e) {
-            e.printStackTrace();
-        }
 
         // TODO: delete Test Output specifications
         System.out.println(specs.name());
@@ -51,42 +73,5 @@ public class Install {
         for (String j : specs.dependencies()) {
             System.out.print(j + " ");
         }
-
-        // String plugins = "plugins";
-        // String name = (toinstall.getName().split(".class"))[0];
-        // String directory = (this.getClass().getResource("Install.class")
-        // .getPath().split(Install.class.getName()))[0]
-        // + plugins + "/" + name + "/";
-        //
-        // // Cr�e le chemin
-        // if ((new File(
-        // (this.getClass().getResource("Install.class").getPath()
-        // .split(Install.class.getName()))[0]
-        // + plugins
-        // + "/"
-        // + name + "/")).mkdirs())
-        // System.out.println("chemin crée :" + directory);
-        //
-        // String fileout = directory + toinstall.getName();
-        // // Affiche le fichier de destination
-        // System.out.println(fileout);
-        // File out = new File(fileout);
-        //
-        // try {
-        // // Copy le plugin a installer dans son dossier
-        // Files.copy(toinstall.toPath(), out.toPath());
-        //
-        // Class<?> cl = Class.forName(plugins + "." + name + "." + name);
-        // Corpoplugins p = (Corpoplugins) cl.newInstance();
-        // System.out.println("--resultat : " + p.toString());
-
-        //
-        // } catch (IOException | ClassNotFoundException |
-        // InstantiationException
-        // | IllegalAccessException e) {
-        // // TODO Auto-generated catch block
-        // e.printStackTrace();
-        // }
-
     }
 }

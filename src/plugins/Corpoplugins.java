@@ -3,7 +3,11 @@ package plugins;
 import net.xeoh.plugins.base.Plugin;
 
 import java.io.File;
+import java.io.IOException;
 
+/**
+ * @author Fati CHEN
+ */
 @Pluginspecs(
         name = "Plugin",
         version = "1.0.0",
@@ -12,8 +16,8 @@ import java.io.File;
         dependencies = "none",
         extensions = "none")
 public interface Corpoplugins extends Plugin {
-    File file_in;
-    File file_out;
+    File file_in = null;
+    File file_out = null;
 
     /**
      * Loading the selected file in the plugin and sets the output file
@@ -30,7 +34,7 @@ public interface Corpoplugins extends Plugin {
      * @param options eventuals options of the plugin
      * @return void
      */
-    public void processExtraction(String[] options);
+    public void processExtraction(String[] options) throws IOException;
 
     /*-------------------
      * Getters - Setters - toString
