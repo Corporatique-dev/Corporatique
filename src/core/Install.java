@@ -1,14 +1,14 @@
 package core;
 
+import Exceptions.PluginDependenciesNotPresentException;
+import Exceptions.PluginIsInstalledException;
+import Exceptions.PluginSpecsNotFoundException;
 import net.xeoh.plugins.base.PluginManager;
 import net.xeoh.plugins.base.impl.PluginManagerFactory;
 import plugins.Corpoplugins;
 import plugins.Pluginspecs;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -26,10 +26,7 @@ public class Install {
      * @throws IOException
      */
     private String[] getConfig() throws IOException {
-        String path = Corporatique.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-
-
-        File config = new File(path + File.separator + ".properties");
+        File config = new File(".properties");
         if (config.createNewFile())
             return null;
 
@@ -49,30 +46,83 @@ public class Install {
         return configs;
     }
 
-    public void installPlugin(/*TODO: File toinstall*/) {
-        //Setting up the Plugin thing
-        PluginManager pm = PluginManagerFactory.createPluginManager();
-        // adding a plugin from a path
-        System.out.println(new File("plugins/doc/").toURI());
-        pm.addPluginsFrom(new File("./plugins/doc/").toURI());
-        // getting the plugin
-        Corpoplugins extension = pm.getPlugin(Corpoplugins.class);
-        System.out.println(extension.getClass());
-        // if it has the annotations
-        Pluginspecs specs = extension.getClass().getAnnotation(Pluginspecs.class);
+    private void addPlugintoConfig(String namep, String version, String[] extensions) throws IOException {
+        File config = new File(".properties");
 
-        extension.toString();
+        FileWriter configFW = new FileWriter(config);
+        BufferedWriter configBW = new BufferedWriter(configFW);
 
-        // TODO: delete Test Output specifications
-        System.out.println(specs.name());
-        System.out.println(specs.version());
-        System.out.println(specs.author());
-        System.out.println(specs.description());
-        for (String i : specs.extensions()) {
-            System.out.println(i + " ");
+        String formats = "";
+
+        for (String ext : extensions) {
+            formats += "|" + ext;
         }
-        for (String j : specs.dependencies()) {
-            System.out.print(j + " ");
+
+        String str = "plugin>" + namep + ">" + version + formats;
+
+
+        configBW.newLine();
+        configBW.write(str);
+
+        configBW.close();
+    }
+
+    private void isPlugin(Pluginspecs pluginspecs, String[] config) throws PluginIsInstalledException {
+        Boolean verification = false;
+        for (String line : config) {
+            verification = line.matches("plugin>" + pluginspecs.name());
+            if (verification)
+                break;
+        }
+        if (verification) throw new PluginIsInstalledException();
+    }
+
+    private void hasDependencies(Pluginspecs pluginspecs, String[] config) throws PluginDependenciesNotPresentException {
+
+        String[] pluginspecstab = pluginspecs.dependencies();
+        boolean dependencies = false;
+
+        if (pluginspecstab.length > 0) {
+            for (String dep : pluginspecstab) {
+                dependencies = false; // initialisation of dependencies to false for each dependence
+                for (String line : config) {
+                    if (!dependencies) // if there is no match yet
+                        dependencies = line.matches("plugin>" + dep);
+                    else // if there is a match
+                        break;
+                }
+                if (!dependencies) // If at the end of the config file, there wasn't any match to the wanted dependence
+                    break;
+            }
+            if (dependencies) throw new PluginDependenciesNotPresentException();
+        }
+    }
+
+    /**
+     * @param path_to_install String    Is the path to the plugin to install
+     */
+    public void installPlugin(String path_to_install) {
+        PluginManager pm = PluginManagerFactory.createPluginManager(); //Setting up the PluginManger from jspf
+        pm.addPluginsFrom(new File(path_to_install.replaceAll("\"", "")).toURI()); // adding the path to verify
+        Corpoplugins extension = pm.getPlugin(Corpoplugins.class); // getting the class which implements our plugin interface
+
+        // TODO : delete this class test
+        System.out.println(extension.getClass());
+        Pluginspecs pluginspecs;
+        String[] config;
+
+
+        try {
+            config = this.getConfig(); // Get the configuration file
+            pluginspecs = extension.getClass().getAnnotation(Pluginspecs.class); // Get the Pluginspecs from jar
+            if (pluginspecs == null) throw new PluginSpecsNotFoundException(); // if there is no annotations
+
+            this.isPlugin(pluginspecs, config); // if the plugin is already installed
+            this.hasDependencies(pluginspecs, config);
+
+        } catch (IOException | PluginDependenciesNotPresentException | PluginIsInstalledException | PluginSpecsNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }
+

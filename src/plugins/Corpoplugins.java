@@ -24,7 +24,6 @@ public interface Corpoplugins extends Plugin {
      * (security measures)
      *
      * @param file_in File to load
-     * @return void
      */
     public void Load(File file_in, File file_out);
 
@@ -32,17 +31,12 @@ public interface Corpoplugins extends Plugin {
      * Process the text extraction to file_out with options if necessary
      *
      * @param options eventuals options of the plugin
-     * @return void
      */
     public void processExtraction(String[] options) throws IOException;
 
     /*-------------------
      * Getters - Setters - toString
      */
-    public File getFileIn();
-
-    public File getFileOut();
-
     void setFileIn(File file_in);
 
     void setFileOut(File file_out);
