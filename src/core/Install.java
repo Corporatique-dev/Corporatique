@@ -2,7 +2,6 @@ package core;
 
 import net.xeoh.plugins.base.PluginManager;
 import net.xeoh.plugins.base.impl.PluginManagerFactory;
-import net.xeoh.plugins.base.util.uri.ClassURI;
 import plugins.Corpoplugins;
 import plugins.Pluginspecs;
 
@@ -32,7 +31,7 @@ public class Install {
 
         File config = new File(path + File.separator + ".properties");
         if (config.createNewFile())
-            return NULL;
+            return null;
 
         FileReader configFR = new FileReader(config);
         BufferedReader configBR = new BufferedReader(configFR);
@@ -54,13 +53,15 @@ public class Install {
         //Setting up the Plugin thing
         PluginManager pm = PluginManagerFactory.createPluginManager();
         // adding a plugin from a path
-        pm.addPluginsFrom(ClassURI.CLASSPATH);
+        System.out.println(new File("plugins/doc/").toURI());
+        pm.addPluginsFrom(new File("./plugins/doc/").toURI());
         // getting the plugin
         Corpoplugins extension = pm.getPlugin(Corpoplugins.class);
         System.out.println(extension.getClass());
         // if it has the annotations
         Pluginspecs specs = extension.getClass().getAnnotation(Pluginspecs.class);
 
+        extension.toString();
 
         // TODO: delete Test Output specifications
         System.out.println(specs.name());
