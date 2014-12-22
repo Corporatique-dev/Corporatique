@@ -31,7 +31,7 @@ public class Install {
     private String[] configString;
 
     /**
-     * Will install the first plugin in a given directory or the specified plugin.
+     * Will install the specified plugin.
      *
      * @param path_to_install String    Is the path to the plugin to install
      */
@@ -101,7 +101,7 @@ public class Install {
         Boolean verification = false;
 
         for (String line : configString) {
-            verification = line.contains(PLUGIN + INTERSEPARATOR + plugin_specs.name());
+            verification = line.contains(PLUGIN + INTERSEPARATOR + plugin_specs.name().toUpperCase());
             if (verification) break;
         }
         if (verification) throw new PluginIsInstalledException(plugin_specs.name());
@@ -126,7 +126,7 @@ public class Install {
 
             for (String line : configString) {
                 // if there is no match found yet, continue, else break
-                if (!dependencies) dependencies = line.contains(PLUGIN + INTERSEPARATOR + dep);
+                if (!dependencies) dependencies = line.contains(PLUGIN + INTERSEPARATOR + dep.toUpperCase());
                 else break;
             }
             // If at the end of the config file, there wasn't any match to the wanted dependence
@@ -149,17 +149,17 @@ public class Install {
             if (configString.length != 0) {
                 for (String confline : configString) {
                     formats += SEPARATOR;
-                    if (confline.contains(DEFAULT + INTERSEPARATOR + ext))
+                    if (confline.contains(DEFAULT + INTERSEPARATOR + ext.toLowerCase()))
                         formats += "";
-                    else if (confline.contains(SEPARATOR + ext))
+                    else if (confline.contains(SEPARATOR + ext.toLowerCase()))
                         formats += DEFAULT + INTERSEPARATOR;
                     formats += ext;
                 }
-            } else formats += SEPARATOR + ext;
+            } else formats += SEPARATOR + ext.toLowerCase();
         }
 
         FileUtils.writeStringToFile(config,
-                PLUGIN + INTERSEPARATOR + plugin_specs.name() + INTERSEPARATOR + plugin_specs.version()
+                PLUGIN + INTERSEPARATOR + plugin_specs.name().toUpperCase() + INTERSEPARATOR + plugin_specs.version()
                         + formats + System.lineSeparator(), true);
     }
 

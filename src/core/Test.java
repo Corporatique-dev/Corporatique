@@ -34,8 +34,10 @@ public class Test {
         String dir = sc.next();
         Install j = new Install();
         j.installPlugin(dir);
-
         sc.close();
+
+        /*Execute e = new Execute();
+        e.executePlugin("Doc");*/
 
     }
 }
