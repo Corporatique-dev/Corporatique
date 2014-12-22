@@ -29,7 +29,7 @@ public class Test {
     }
 
     public static void Install() {
-        System.out.println("-========-Test Installation");
+        System.out.println("-=========-Test Installation");
         Scanner sc = new Scanner(System.in);
         String dir = sc.next();
         Install j = new Install();

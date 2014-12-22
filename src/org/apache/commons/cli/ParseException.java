@@ -18,7 +18,7 @@
 package org.apache.commons.cli;
 
 /**
- * Base for Exceptions thrown during parsing of a command-line.
+ * Base for exceptions thrown during parsing of a command-line.
  *
  * @author bob mcwhirter (bob @ werken.com)
  * @version $Revision: 680644 $, $Date: 2008-07-29 01:13:48 -0700 (Tue, 29 Jul 2008) $
