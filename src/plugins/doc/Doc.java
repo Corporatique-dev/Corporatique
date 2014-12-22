@@ -15,7 +15,7 @@ import java.io.*;
         description = "allows to extract text from .doc documents",
         author = "Maxime CHAPUIS",
         dependencies = "",
-        extensions = "")
+        extensions = {"doc", "xml"})
 @PluginImplementation
 public class Doc implements Corpoplugins {
 
