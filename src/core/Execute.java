@@ -5,7 +5,7 @@ package core;
  */
 public class Execute {
 
-    public void executePlugin(String plugin_name) {
+    public void executePlugin(String plugin_name, String options) {
 
 
         /*PluginManager pm = PluginManagerFactory.createPluginManager(); //Setting up the PluginManger from jspf

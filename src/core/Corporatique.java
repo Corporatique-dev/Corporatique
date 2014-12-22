@@ -16,6 +16,7 @@ public class Corporatique {
 
     }
 
+    @Override
     public String toString() {
         return "Usage : [plugin, -format, install, remove, update, forceupdate] file-input [-output fileout,-options]";
     }
