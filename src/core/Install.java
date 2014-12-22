@@ -1,9 +1,9 @@
 package core;
 
-import Exceptions.IsNotFileException;
-import Exceptions.PluginDependenciesNotPresentException;
-import Exceptions.PluginIsInstalledException;
-import Exceptions.PluginSpecsNotFoundException;
+import exceptions.IsNotFileException;
+import exceptions.PluginDependenciesNotPresentException;
+import exceptions.PluginIsInstalledException;
+import exceptions.PluginSpecsNotFoundException;
 import net.xeoh.plugins.base.PluginManager;
 import net.xeoh.plugins.base.impl.PluginManagerFactory;
 import org.apache.commons.io.FileUtils;
