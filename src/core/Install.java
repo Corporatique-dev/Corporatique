@@ -27,7 +27,7 @@ public class Install {
     private static final String PLUGIN = "plugin";
     private static final String SEPARATOR = "|";
     private static final String PLUGINDIRECTORY = "plugins/";
-    private final File config = new File(".properties");
+    private final File config = new File("Corporatique.properties");
     private String[] configString;
 
     /**
