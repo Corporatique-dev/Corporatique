@@ -11,9 +11,8 @@ package core;
 public class Corporatique {
 
     public static void main(String[] args) {
-        //Test.Class from Name();
-        Test.Install();
-
+        //Test.Install();
+        Test.Execute();
     }
 
     @Override

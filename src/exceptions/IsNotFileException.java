@@ -5,6 +5,6 @@ package exceptions;
  */
 public class IsNotFileException extends Exception {
     public IsNotFileException(String message) {
-        super(System.lineSeparator() + "The given path of the plugin " + message + " is not a file");
+        super(System.lineSeparator() + "The given path " + message + " is not a file");
     }
 }

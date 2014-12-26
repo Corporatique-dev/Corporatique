@@ -1,6 +1,6 @@
 package core;
 
-import exceptions.IsNotFileException;
+import exceptions.IsNotJarException;
 import exceptions.PluginDependenciesNotPresentException;
 import exceptions.PluginIsInstalledException;
 import exceptions.PluginSpecsNotFoundException;
@@ -67,7 +67,7 @@ public class Install {
             System.out.print("Adding the plugin to the configuration file");
             this.addPlugintoConfig(plugin_specs);
             System.out.println("...OK");
-        } catch (IOException | PluginDependenciesNotPresentException | PluginIsInstalledException | PluginSpecsNotFoundException | IsNotFileException e) {
+        } catch (IOException | PluginDependenciesNotPresentException | PluginIsInstalledException | PluginSpecsNotFoundException | IsNotJarException e) {
             System.err.println(e.getMessage());
         }
     }
@@ -82,10 +82,9 @@ public class Install {
         if (config.createNewFile()) return null;
         String[] configs;
 
-
         List<String> airlines = FileUtils.readLines(config);
-        configs = new String[airlines.size()];
 
+        configs = new String[airlines.size()];
         airlines.toArray(configs);
 
         return configs;
@@ -147,11 +146,11 @@ public class Install {
             if (Objects.equals(ext, "")) break;
 
             if (configString.length != 0) {
-                for (String confline : configString) {
+                for (String config_line : configString) {
                     formats += SEPARATOR;
-                    if (confline.contains(DEFAULT + INTERSEPARATOR + ext.toLowerCase()))
+                    if (config_line.contains(DEFAULT + INTERSEPARATOR + ext.toLowerCase()))
                         formats += "";
-                    else if (confline.contains(SEPARATOR + ext.toLowerCase()))
+                    else if (config_line.contains(SEPARATOR + ext.toLowerCase()))
                         formats += DEFAULT + INTERSEPARATOR;
                     formats += ext;
                 }
@@ -170,10 +169,10 @@ public class Install {
      * @param plugin_path File The path to the plugin
      * @throws IOException
      */
-    private void copyPlugintoDirectory(String plugin_name, File plugin_path) throws IOException, IsNotFileException {
+    private void copyPlugintoDirectory(String plugin_name, File plugin_path) throws IOException, IsNotJarException {
         if (plugin_path.isFile())
             FileUtils.copyFileToDirectory(plugin_path, new File(PLUGINDIRECTORY + plugin_name.toLowerCase()));
-        else throw new IsNotFileException(plugin_name);
+        else throw new IsNotJarException(plugin_name);
     }
 }
 

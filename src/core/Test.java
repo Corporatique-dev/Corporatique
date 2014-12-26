@@ -2,6 +2,7 @@ package core;
 
 import plugins.Corpoplugins;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -35,9 +36,20 @@ public class Test {
         Install j = new Install();
         j.installPlugin(dir);
         sc.close();
+    }
 
-        /*Execute e = new Execute();
-        e.executePlugin("Doc");*/
+    public static void Execute() {
+        System.out.println("-=========-Test Extraction");
+        Scanner sc = new Scanner(System.in);
+        String filein = sc.next();
+        String file_out = sc.next();
+        sc.close();
+        filein = filein.replaceAll("\"", "");
+        file_out = file_out.replaceAll("\"", "");
+        if (Objects.equals(file_out, "null"))
+            file_out = null;
+        Execute e = new Execute();
+        e.executePlugin("moc", null, filein, file_out, null);
 
     }
 }
