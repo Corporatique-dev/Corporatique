@@ -1,6 +1,8 @@
 package exceptions;
 
 /**
+ * Will be triggered if the plugin is already installed.
+ * 
  * @author Fati CHEN
  * @version 1.0.0
  */

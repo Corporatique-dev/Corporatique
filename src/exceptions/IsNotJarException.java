@@ -1,7 +1,10 @@
 package exceptions;
 
 /**
- * Created by stardisblue on 22/12/2014.
+ * Will be triggered if the given path of the plugin during the installation isn't a jar file.
+ * 
+ * @author Fati CHEN
+ * @version 1.0.0
  */
 public class IsNotJarException extends Exception {
     public IsNotJarException(String message) {

@@ -1,7 +1,10 @@
 package exceptions;
 
 /**
- * Created by stardisblue on 22/12/2014.
+ * Will be triggered if the path of the given file to process is not a file.
+ * 
+ * @author Fati CHEN
+ * @version 1.0.0
  */
 public class IsNotFileException extends Exception {
     public IsNotFileException(String message) {

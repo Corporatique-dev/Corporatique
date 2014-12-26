@@ -1,7 +1,10 @@
 package exceptions;
 
 /**
- * Created by stardisblue on 24/12/2014.
+ * Will be triggered if the format given by the user isn't present in the properties.
+ * 
+ * @author Fati CHEN
+ * @version 1.0.0
  */
 public class FormatNotFoundException extends Exception {
     public FormatNotFoundException(String message) {

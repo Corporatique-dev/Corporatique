@@ -1,7 +1,10 @@
 package exceptions;
 
 /**
- * Created by stardisblue on 24/12/2014.
+ * Will be triggered if the given plugin isn't installed.
+ * 
+ * @author Fati CHEN
+ * @version 1.0.0
  */
 public class PluginNotFoundException extends Exception {
     public PluginNotFoundException(String message) {

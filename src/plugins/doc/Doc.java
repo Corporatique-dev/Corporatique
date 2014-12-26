@@ -24,9 +24,8 @@ public class Doc implements Corpoplugins {
     private File out;
 
     public void Load(File file_in, File file_out) {
-        this.in = new File(in.getAbsolutePath());
-        this.out = new File(out.getAbsolutePath());
-
+        this.in = new File(file_in.getAbsolutePath());
+        this.out = new File(file_out.getAbsolutePath());
     }
 
     public void processExtraction(String[] options) throws IOException {
