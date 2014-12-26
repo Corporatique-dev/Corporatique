@@ -24,15 +24,15 @@ import java.util.Objects;
  * @author Fati CHEN
  */
 public class Install {
-	private static final String DOUBLEQUOTE = Conf.getString("replaceAll");
-	private static final String INTERSEPARATOR = Conf
+	private static final String DOUBLEQUOTE = Messages.getString("replaceAll");
+	private static final String INTERSEPARATOR = Messages
 			.getString("interseparator");
-	private static final String DEFAULT = Conf.getString("default");
-	private static final String PLUGIN = Conf.getString("plugin");
-	private static final String SEPARATOR = Conf.getString("separator");
-	private static final String PLUGINDIRECTORY = Conf
+	private static final String DEFAULT = Messages.getString("default");
+	private static final String PLUGIN = Messages.getString("plugin");
+	private static final String SEPARATOR = Messages.getString("separator");
+	private static final String PLUGINDIRECTORY = Messages
 			.getString("plugindirectory");
-	private final File config = new File(Conf.getString("propertiesfile"));
+	private final File config = new File(Messages.getString("propertiesfile"));
 	private String[] configString;
 
 	/**
@@ -67,32 +67,32 @@ public class Install {
 					.getAnnotation(Pluginspecs.class); // Get the Pluginspecs
 														// from jar
 
-			System.out.print(Conf.getString("flag.install.plugin-specs")
+			System.out.print(Messages.getString("flag.install.plugin-specs")
 					+ extension.getClass());
 			if (plugin_specs == null)
 				throw new PluginSpecsNotFoundException(extension.getClass()
 						.toString()); // if there is no annotations
-			System.out.println(Conf.getString("done"));
+			System.out.println(Messages.getString("done"));
 
-			System.out.print(Conf.getString("flag.install.verification"));
+			System.out.print(Messages.getString("flag.install.verification"));
 			this.isInstalled(plugin_specs); // if the plugin is already
 											// installed
-			System.out.println(Conf.getString("done"));
+			System.out.println(Messages.getString("done"));
 
-			System.out.print(Conf.getString("flag.install.dependencies"));
+			System.out.print(Messages.getString("flag.install.dependencies"));
 			this.hasDependencies(plugin_specs); // if all the dependencies are
 												// present
-			System.out.println(Conf.getString("done"));
+			System.out.println(Messages.getString("done"));
 
-			System.out.print(Conf.getString("flag.install.copyjar")
+			System.out.print(Messages.getString("flag.install.copyjar")
 					+ plugin_specs.name().toLowerCase()
-					+ Conf.getString("flag.install.copyjar2"));
+					+ Messages.getString("flag.install.copyjar2"));
 			this.copyPlugintoDirectory(plugin_specs.name(), plugin_path);
-			System.out.println(Conf.getString("done"));
+			System.out.println(Messages.getString("done"));
 
-			System.out.print(Conf.getString("flag.install.adding-properties"));
+			System.out.print(Messages.getString("flag.install.adding-properties"));
 			this.addPlugintoConfig(plugin_specs);
-			System.out.println(Conf.getString("done"));
+			System.out.println(Messages.getString("done"));
 		} catch (IOException | PluginDependenciesNotPresentException
 				| PluginIsInstalledException | PluginSpecsNotFoundException
 				| IsNotJarException e) {

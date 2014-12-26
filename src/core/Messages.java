@@ -3,13 +3,13 @@ package core;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
-public class Conf {
+public class Messages {
 	private static final String BUNDLE_NAME = "core.configfile";
 
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle
 			.getBundle(BUNDLE_NAME);
 
-	private Conf() {
+	private Messages() {
 	}
 
 	public static String getString(String key) {

@@ -23,17 +23,17 @@ import java.util.List;
  */
 public class Execute {
 
-	private static final String TXT = Conf.getString("txtfile");
-	private static final String FILESPITTER = Conf.getString("filesplitter");
-	private static final String DOUBLEQUOTE = Conf.getString("replaceAll");
-	private static final String INTERSEPARATOR = Conf
+	private static final String TXT = Messages.getString("txtfile");
+	private static final String FILESPITTER = Messages.getString("filesplitter");
+	private static final String DOUBLEQUOTE = Messages.getString("replaceAll");
+	private static final String INTERSEPARATOR = Messages
 			.getString("interseparator");
-	private static final String DEFAULT = Conf.getString("default");
-	private static final String PLUGIN = Conf.getString("plugin");
-	private static final String SEPARATOR = Conf.getString("separator");
-	private static final String PLUGINDIRECTORY = Conf
+	private static final String DEFAULT = Messages.getString("default");
+	private static final String PLUGIN = Messages.getString("plugin");
+	private static final String SEPARATOR = Messages.getString("separator");
+	private static final String PLUGINDIRECTORY = Messages
 			.getString("plugindirectory");
-	private final File config = new File(Conf.getString("propertiesfile"));
+	private final File config = new File(Messages.getString("propertiesfile"));
 
 	/**
 	 * Extracts the properties in a [ plugin | format ] structure.
@@ -165,9 +165,9 @@ public class Execute {
 				file_out = new File(path_fileout);
 
 			extractor.Load(file_in, file_out);
-			System.out.print(Conf.getString("flag.execute.processing"));
+			System.out.print(Messages.getString("flag.execute.processing"));
 			extractor.processExtraction(options);
-			System.out.print(Conf.getString("done"));
+			System.out.print(Messages.getString("done"));
 		} catch (IsNotFileException | IOException | PluginNotFoundException
 				| FormatNotFoundException e) {
 			System.err.println(e.getMessage());
