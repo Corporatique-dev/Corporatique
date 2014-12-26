@@ -41,5 +41,6 @@ public interface Corpoplugins extends Plugin {
 
     void setFileOut(File file_out);
 
+    @Override
     public String toString();
 }

@@ -10,7 +10,7 @@ Get the lasted release clicking on the **Download ZIP** Button
 
 ##Usage
 Launch the JAR file typing:
-`...\path_to_jar\Corporatique.jar` on windows or
+`...\path_to_jar\Corporatique.jar ` on windows or
 
 `.../path_to_jar/Corporatique.jar` on linux
 

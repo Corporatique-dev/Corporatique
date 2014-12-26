@@ -124,9 +124,7 @@ public class Execute {
             } else
                 file_out = new File(path_fileout);
 
-            extractor.setFileIn(file_in);
-            extractor.setFileOut(file_out);
-
+            extractor.Load(file_in, file_out);
             System.out.print("Beginning the Text extraction");
             extractor.processExtraction(options);
             System.out.print("...OK");
