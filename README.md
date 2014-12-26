@@ -10,12 +10,12 @@ Get the lasted release clicking on the **Download ZIP** Button
 
 ##Usage
 Launch the JAR file typing:
-`java C:\\...\path_to_jar\Corporatique.jar` on windows or
+`...\path_to_jar\Corporatique.jar` on windows or
 
-` java C:/.../path_to_jar/Corporatique.jar` on linux
+`.../path_to_jar/Corporatique.jar` on linux
 
 Get the list of commands by typing -help
 
 ##Plugin Installation
 To install a plugin use 
-`java .../Corporatique.jar install .../path_to_plugin/plugin.jar`
+`.../Corporatique.jar install .../path_to_plugin/plugin.jar`
