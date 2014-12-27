@@ -31,8 +31,7 @@ public class Execute extends ActionBase {
      * @param path_fileout String [optional] Path to the processed file
      * @param options      String[] [optional] Eventual options of a given plugin;
      */
-    public void executePlugin(String plugin_name, String format,
-                              String path_filein, String path_fileout, String[] options) {
+    public void executePlugin(String plugin_name, String format, String path_filein, String path_fileout, String[] options) {
         String[] config_strings;
         try {
             PluginManager pm = PluginManagerFactory.createPluginManager();
