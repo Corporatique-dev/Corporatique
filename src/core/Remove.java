@@ -1,6 +1,7 @@
 package core;
 
 import exceptions.PluginNotFoundException;
+
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -24,11 +25,11 @@ public class Remove extends ActionBase {
         try {
             configString = getConfig();
 
-            System.out.print("Removing the plugin from configuration file");
+            System.out.print(Messages.getString("flag.remove.pluginconfig"));
             removeFromProperties(this.findPluginLine(plugin_to_remove));
             System.out.println(Messages.getString("done"));
 
-            System.out.print("Removing the plugin folder from " + PLUGINDIRECTORY);
+            System.out.print(Messages.getString("flag.remove.pluginfolder") + PLUGINDIRECTORY);
             FileUtils.deleteDirectory(new File(PLUGINDIRECTORY + plugin_to_remove.toLowerCase()));
             System.out.println(Messages.getString("done"));
         } catch (IOException | PluginNotFoundException e) {

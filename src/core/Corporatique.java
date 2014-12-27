@@ -12,8 +12,10 @@ import java.util.Scanner;
  */
 public class Corporatique {
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    private static Scanner sc;
+
+	public static void main(String[] args) {
+        sc = new Scanner(System.in);
         System.out.println("Choose between 1 and 3");
         int i = sc.nextInt();
         switch (i) {
