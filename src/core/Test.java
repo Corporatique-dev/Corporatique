@@ -13,43 +13,48 @@ import java.util.Scanner;
  */
 public class Test {
 
-	static Scanner sc = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
 
-	// Test du PDF
-	public static void ClassfromName() {
-		System.out.println("-========-Test Classe from String");
-		try {
-			Class<?> cl = Class.forName("plugins.PDF.PDF");
-			Corpoplugins p = (Corpoplugins) cl.newInstance();
-			System.out.println("--resultat : " + p.toString());
+    // Test du PDF
+    public static void ClassfromName() {
+        System.out.println("-========-Test Classe from String");
+        try {
+            Class<?> cl = Class.forName("plugins.PDF.PDF");
+            Corpoplugins p = (Corpoplugins) cl.newInstance();
+            System.out.println("--resultat : " + p.toString());
 
-		} catch (ClassNotFoundException | InstantiationException
-				| IllegalAccessException e) {
-			e.printStackTrace();
-		}
-	}
+        } catch (ClassNotFoundException | InstantiationException
+                | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
 
-	public static void Install() {
-		System.out.println("-=========-Test Installation");
-		Scanner sc = new Scanner(System.in);
-		String dir = sc.next();
-		Install j = new Install();
-		j.installPlugin(dir);
-		sc.close();
-	}
+    public static void Install() {
+        System.out.println("-=========-Test Installation");
+        String dir = sc.next();
+        Install j = new Install();
+        j.installPlugin(dir);
+    }
 
-	public static void Execute() {
-		System.out.println("-=========-Test Extraction");
-		Scanner sc = new Scanner(System.in);
-		String filein = sc.next();
-		String file_out = sc.next();
-		sc.close();
-		filein = filein.replaceAll("\"", "");
-		file_out = file_out.replaceAll("\"", "");
-		if (Objects.equals(file_out, "null"))
-			file_out = null;
-		Execute e = new Execute();
-		e.executePlugin(null, null, filein, file_out, null);
+    public static void Execute() {
+        System.out.println("-=========-Test Extraction");
+        String file_in = sc.next();
+        String file_out = sc.next();
+        sc.close();
+        file_in = file_in.replaceAll("\"", "");
+        file_out = file_out.replaceAll("\"", "");
+        if (Objects.equals(file_out, "null"))
+            file_out = null;
+        Execute e = new Execute();
+        e.executePlugin(null, null, file_in, null, null);
 
-	}
+    }
+
+    public static void Remove() {
+        System.out.println("-=========-Test deletion");
+        String plugin_to_remove = sc.next();
+
+        Remove r = new Remove();
+        r.remove(plugin_to_remove);
+    }
 }

@@ -1,62 +1,54 @@
 package core;
 
+import exceptions.PluginNotFoundException;
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Properties;
+import java.util.regex.Pattern;
 
 /**
  * Removes the plugin.	Allow you to remove a plugin whet it's not needed anymore
  *
  * @author Fati CHEN
- * @version 1.0
+ * @version 1.0.0
  */
-public class Remove {
+public class Remove extends ActionBase {
 
-    public void remove() {
-    }
-
-    public boolean remove(String toremove) {
-
-        String configPath = "config";
-        Properties properties = new Properties();
+    /**
+     * Will remove the given plugin, if the plugin is registered in the configuration file
+     *
+     * @param plugin_to_remove String The name of the plugin which needs to be removed
+     */
+    public void remove(String plugin_to_remove) {
         try {
-            FileInputStream in = new FileInputStream(configPath);
-            properties.load(in);
-            in.close();
-        } catch (IOException e) {
-            System.out.println("Unable to load config file.");
+            configString = getConfig();
+
+            System.out.print("Removing the plugin from configuration file");
+            removeFromProperties(this.findPluginLine(plugin_to_remove));
+            System.out.println(Messages.getString("done"));
+
+            System.out.print("Removing the plugin folder from " + PLUGINDIRECTORY);
+            FileUtils.deleteDirectory(new File(PLUGINDIRECTORY + plugin_to_remove.toLowerCase()));
+            System.out.println(Messages.getString("done"));
+        } catch (IOException | PluginNotFoundException e) {
+            System.err.println(e.getMessage());
         }
-
-        String fromconf = properties.getProperty(toremove, "notfound");
-        if (fromconf != "notfound") {
-
-            String plugins = "plugins";
-            String name = (fromconf.split("."))[1];
-            String directorypath = (this.getClass().getResource("Remove.class")
-                    .getPath().split(Remove.class.getName()))[0]
-                    + plugins + "/" + name + "/";
-            File directory = new File(directorypath);
-
-            return removeaux(directory);
-        }
-        return false;
     }
 
-    public boolean removeaux(File directory) {
-        boolean resultat = true;
-        if (directory.exists()) {
-            File[] files = directory.listFiles();
-            for (int i = 0; i < files.length; i++) {
-                if (files[i].isDirectory()) {
-                    resultat &= removeaux(files[i]);
-                } else {
-                    resultat &= files[i].delete();
-                }
-            }
-        }
-        resultat &= directory.delete();
-        return (resultat);
+    public void removeFromProperties(String line) throws IOException {
+        String fileString;
+        fileString = FileUtils.readFileToString(config);
+        String finalString = fileString.replaceAll(Pattern.quote(line) + System.lineSeparator(), EMPTYSTRING);
+        FileUtils.writeStringToFile(config, finalString);
+    }
 
+    public String findPluginLine(String plugin) throws IOException, PluginNotFoundException {
+
+        for (String line : configString) {
+            if (line.contains(PLUGIN + INTERSEPARATOR + plugin.toUpperCase() + INTERSEPARATOR))
+                return line;
+        }
+        throw new PluginNotFoundException(plugin);
     }
 }

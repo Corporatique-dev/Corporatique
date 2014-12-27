@@ -1,5 +1,7 @@
 package core;
 
+import java.util.Scanner;
+
 /**
  * Main launcher of the program, list the plugins, their usage and options
  * Redirects to the plugins main, using a config file to do so, sending command
@@ -11,8 +13,26 @@ package core;
 public class Corporatique {
 
     public static void main(String[] args) {
-        //Test.Install();
-        Test.Execute();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Choose between 1 and 3");
+        int i = sc.nextInt();
+        switch (i) {
+            case 1:
+                Test.Install();
+                break;
+
+            case 2:
+                Test.Execute();
+                break;
+
+            case 3:
+                Test.Remove();
+                break;
+
+            default:
+                System.out.println("Number between 1 and 3");
+                break;
+        }
     }
 
     @Override
