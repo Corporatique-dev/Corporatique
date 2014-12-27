@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.regex.Pattern;
 
 /**
- * Removes the plugin.	Allow you to remove a plugin whet it's not needed anymore
+ * Removes a plugin. Will remove the given plugin if he's present in the Coproplugins.properties file
  *
  * @author Fati CHEN
  * @version 1.0.0
