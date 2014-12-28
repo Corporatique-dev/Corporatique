@@ -124,7 +124,7 @@ public class Execute extends ActionBase {
             extractor.Load(file_in, file_out);
             System.out.print(Messages.getString("flag.execute.processing"));
             extractor.processExtraction(options);
-            System.out.print(Messages.getString("done"));
+            System.out.print(Messages.getString("flag.done"));
         } catch (IsNotFileException | IOException | PluginNotFoundException
                 | FormatNotFoundException e) {
             System.err.println(e.getMessage());

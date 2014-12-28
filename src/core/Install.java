@@ -48,25 +48,25 @@ public class Install extends ActionBase {
             if (plugin_specs == null)
                 throw new PluginSpecsNotFoundException(extension.getClass()
                         .toString()); // if there is no annotations
-            System.out.println(Messages.getString("done"));
+            System.out.println(Messages.getString("flag.done"));
 
             System.out.print(Messages.getString("flag.install.verification"));
             this.isInstalled(plugin_specs); // if the plugin is already installed
-            System.out.println(Messages.getString("done"));
+            System.out.println(Messages.getString("flag.done"));
 
             System.out.print(Messages.getString("flag.install.dependencies"));
             this.hasDependencies(plugin_specs); // if all the dependencies are present
-            System.out.println(Messages.getString("done"));
+            System.out.println(Messages.getString("flag.done"));
 
             System.out.print(Messages.getString("flag.install.copyjar")
                     + plugin_specs.name().toLowerCase()
                     + Messages.getString("flag.install.copyjar2"));
             this.copyPlugintoDirectory(plugin_specs.name(), plugin_path);
-            System.out.println(Messages.getString("done"));
+            System.out.println(Messages.getString("flag.done"));
 
             System.out.print(Messages.getString("flag.install.adding-properties"));
             this.addPlugintoConfig(plugin_specs);
-            System.out.println(Messages.getString("done"));
+            System.out.println(Messages.getString("flag.done"));
         } catch (IOException | PluginDependenciesNotPresentException
                 | PluginIsInstalledException | PluginSpecsNotFoundException
                 | IsNotJarException e) {
