@@ -27,11 +27,11 @@ public class Remove extends ActionBase {
 
             System.out.print(Messages.getString("flag.remove.pluginconfig"));
             removeFromProperties(this.findPluginLine(plugin_to_remove));
-            System.out.println(Messages.getString("done"));
+            System.out.println(Messages.getString("flag.done"));
 
             System.out.print(Messages.getString("flag.remove.pluginfolder") + PLUGINDIRECTORY);
             FileUtils.deleteDirectory(new File(PLUGINDIRECTORY + plugin_to_remove.toLowerCase()));
-            System.out.println(Messages.getString("done"));
+            System.out.println(Messages.getString("flag.done"));
         } catch (IOException | PluginNotFoundException e) {
             System.err.println(e.getMessage());
         }

@@ -11,16 +11,16 @@ import java.util.List;
  * @version 1.0.0
  */
 public abstract class ActionBase {
-    protected static final String TXT = Messages.getString("txtfile");
-    protected static final String FILESPITTER = Messages.getString("filesplitter");
-    protected static final String DOUBLEQUOTE = Messages.getString("replaceall");
+    protected static final String TXT = Messages.getString("file.txt");
+    protected static final String FILESPITTER = Messages.getString("file.splitter");
+    protected static final String DOUBLEQUOTE = Messages.getString("file.replaceall");
     protected static final String EMPTYSTRING = "";
-    protected static final String INTERSEPARATOR = Messages.getString("interseparator");
-    protected static final String DEFAULT = Messages.getString("default");
-    protected static final String PLUGIN = Messages.getString("plugin.name");
-    protected static final String SEPARATOR = Messages.getString("separator");
+    protected static final String INTERSEPARATOR = Messages.getString("properties.interseparator");
+    protected static final String DEFAULT = Messages.getString("properties.default");
+    protected static final String PLUGIN = Messages.getString("properties.name");
+    protected static final String SEPARATOR = Messages.getString("properties.separator");
     protected static final String PLUGINDIRECTORY = Messages.getString("plugin.directory");
-    protected final File config = new File(Messages.getString("propertiesfile"));
+    protected final File config = new File(Messages.getString("properties.file"));
     protected String[] configString;
 
     /**
