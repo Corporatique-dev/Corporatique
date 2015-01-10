@@ -20,8 +20,8 @@ public abstract class ActionBase {
     protected static final String PLUGIN = Messages.getString("properties.name");
     protected static final String SEPARATOR = Messages.getString("properties.separator");
     protected static final String PLUGINDIRECTORY = Messages.getString("plugin.directory");
-    protected final File config = new File(Messages.getString("properties.file"));
-    protected String[] configString;
+    protected static final File config = new File(Messages.getString("properties.file"));
+    protected static String[] configString;
 
     /**
      * Extracts the properties in a [ plugin | format ] structure.
@@ -29,7 +29,7 @@ public abstract class ActionBase {
      * @return String[] properties of the configuration file
      * @throws java.io.IOException
      */
-    protected String[] getConfig() throws IOException {
+    protected static String[] getConfig() throws IOException {
         if (config.createNewFile())
             return null;
         String[] configs;
@@ -41,4 +41,6 @@ public abstract class ActionBase {
 
         return configs;
     }
+
+
 }

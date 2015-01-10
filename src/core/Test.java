@@ -32,8 +32,7 @@ public class Test {
     public static void Install() {
         System.out.println("-=========-Test Installation");
         String dir = sc.next();
-        Install j = new Install();
-        j.installPlugin(dir);
+        Install.installPlugin(dir, true);
     }
 
     public static void Execute() {
@@ -46,15 +45,19 @@ public class Test {
         if (Objects.equals(file_out, "null"))
             file_out = null;
         Execute e = new Execute();
-        e.executePlugin(null, null, file_in, null, null);
+        e.executePlugin(null, null, file_in, null, null, true);
 
     }
 
     public static void Remove() {
         System.out.println("-=========-Test deletion");
         String plugin_to_remove = sc.next();
+        Remove.removePlugin(plugin_to_remove, true);
+    }
 
-        Remove r = new Remove();
-        r.remove(plugin_to_remove);
+    public static void Update() {
+        System.out.println("-=========-Test Update");
+        String plugin_to_update = sc.next();
+        Update.updatePlugin(plugin_to_update, true);
     }
 }

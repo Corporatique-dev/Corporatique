@@ -23,11 +23,14 @@ import java.util.Objects;
 public class Install extends ActionBase {
 
     /**
-     * Will install the specified plugin.
+     * Will install the specified plugin. Will if the plugin is extended from the Corpoplugin interface,
+     * check if it's aready installed, then will copy it under : installation_folder/plugin_name/
      *
      * @param path_to_install String Is the path to the plugin to install
+     * @param debug           boolean Will display the progression of the action if true.
+     * @see core.Remove
      */
-    public void installPlugin(String path_to_install) {
+    public static void installPlugin(String path_to_install, boolean debug) {
         File plugin_path = new File(path_to_install.replaceAll(DOUBLEQUOTE, EMPTYSTRING));
 
 // Setting up the PluginManger from jspf
@@ -39,34 +42,37 @@ public class Install extends ActionBase {
         Pluginspecs plugin_specs;
 
         try {
-            configString = this.getConfig(); // Get the configuration file
+            configString = ActionBase.getConfig(); // Get the configuration file
             plugin_specs = extension.getClass()
                     .getAnnotation(Pluginspecs.class); // Get the Pluginspecs from jar
 
-            System.out.print(Messages.getString("flag.install.plugin-specs")
+            if (debug) System.out.print(Messages.getString("flag.install.plugin-specs")
                     + extension.getClass());
             if (plugin_specs == null)
                 throw new PluginSpecsNotFoundException(extension.getClass()
                         .toString()); // if there is no annotations
-            System.out.println(Messages.getString("flag.done"));
+            if (debug) System.out.println(Messages.getString("flag.done"));
 
-            System.out.print(Messages.getString("flag.install.verification"));
-            this.isInstalled(plugin_specs); // if the plugin is already installed
-            System.out.println(Messages.getString("flag.done"));
+            if (debug) System.out.print(Messages.getString("flag.install.verification"));
+            if (isInstalled(plugin_specs.name()))
+                throw new PluginIsInstalledException(plugin_specs.name()); // if the plugin is already installed
+            if (debug) System.out.println(Messages.getString("flag.done"));
 
-            System.out.print(Messages.getString("flag.install.dependencies"));
-            this.hasDependencies(plugin_specs); // if all the dependencies are present
-            System.out.println(Messages.getString("flag.done"));
+            if (debug) System.out.print(Messages.getString("flag.install.dependencies"));
+            hasDependencies(plugin_specs); // if all the dependencies are present
+            if (debug) System.out.println(Messages.getString("flag.done"));
 
-            System.out.print(Messages.getString("flag.install.copyjar")
+            if (debug) System.out.print(Messages.getString("flag.install.copyjar")
                     + plugin_specs.name().toLowerCase()
                     + Messages.getString("flag.install.copyjar2"));
-            this.copyPlugintoDirectory(plugin_specs.name(), plugin_path);
-            System.out.println(Messages.getString("flag.done"));
+            copyPlugintoDirectory(plugin_specs.name(), plugin_path);
+            if (debug) System.out.println(Messages.getString("flag.done"));
 
-            System.out.print(Messages.getString("flag.install.adding-properties"));
-            this.addPlugintoConfig(plugin_specs);
-            System.out.println(Messages.getString("flag.done"));
+            if (debug) System.out.print(Messages.getString("flag.install.adding-properties"));
+            addPlugintoConfig(plugin_specs);
+            if (debug) System.out.println(Messages.getString("flag.done"));
+
+            System.out.println(Messages.getString("flag.install.success"));
         } catch (IOException | PluginDependenciesNotPresentException
                 | PluginIsInstalledException | PluginSpecsNotFoundException
                 | IsNotJarException e) {
@@ -75,24 +81,22 @@ public class Install extends ActionBase {
     }
 
     /**
-     * Will check if the plugin is already installed
+     * Will check if the plugin is present in the configuration file.
      *
-     * @param plugin_specs Pluginspecs contains the specifications of the given plugin
-     * @throws PluginIsInstalledException
+     * @param name String the name of the plugin, will be converted to UPPERCASE
+     * @return true if the plugin is installed.
      */
-    private void isInstalled(Pluginspecs plugin_specs)
-            throws PluginIsInstalledException {
+    protected static boolean isInstalled(String name) {
         Boolean verification = false;
 
         for (String line : configString) {
             verification = line.contains(PLUGIN + INTERSEPARATOR
-                    + plugin_specs.name().toUpperCase());
+                    + name.toUpperCase());
             if (verification)
                 break;
         }
-        if (verification)
-            throw new PluginIsInstalledException(plugin_specs.name());
 
+        return verification;
     }
 
     /**
@@ -103,7 +107,7 @@ public class Install extends ActionBase {
      * @param plugin_specs Pluginspecs Contains the plugin specifications
      * @throws PluginDependenciesNotPresentException If the wanted dependencies are not present in Corporatique
      */
-    private void hasDependencies(Pluginspecs plugin_specs)
+    protected static void hasDependencies(Pluginspecs plugin_specs)
             throws PluginDependenciesNotPresentException {
         String[] pluginspecstab = plugin_specs.dependencies();
         boolean dependencies = true;
@@ -137,7 +141,7 @@ public class Install extends ActionBase {
      * @param plugin_specs Pluginspecs contains the plugin specifications
      * @throws IOException
      */
-    private void addPlugintoConfig(Pluginspecs plugin_specs) throws IOException {
+    private static void addPlugintoConfig(Pluginspecs plugin_specs) throws IOException {
         String formats = EMPTYSTRING;
         for (String ext : plugin_specs.extensions()) {
             if (Objects.equals(ext, EMPTYSTRING))
@@ -166,7 +170,7 @@ public class Install extends ActionBase {
      * @param plugin_path File The path to the plugin
      * @throws IOException
      */
-    private void copyPlugintoDirectory(String plugin_name, File plugin_path)
+    private static void copyPlugintoDirectory(String plugin_name, File plugin_path)
             throws IOException, IsNotJarException {
         if (plugin_path.isFile())
             FileUtils.copyFileToDirectory(plugin_path, new File(PLUGINDIRECTORY

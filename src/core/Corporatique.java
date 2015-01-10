@@ -14,7 +14,7 @@ public class Corporatique {
 
     private static Scanner sc;
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         sc = new Scanner(System.in);
         System.out.println("Choose between 1 and 3");
         int i = sc.nextInt();
@@ -31,6 +31,10 @@ public class Corporatique {
                 Test.Remove();
                 break;
 
+            case 4:
+                Test.Update();
+                break;
+
             default:
                 System.out.println("Number between 1 and 3");
                 break;
@@ -39,6 +43,6 @@ public class Corporatique {
 
     @Override
     public String toString() {
-        return "Usage : [plugin, -format, install, remove, update, forceupdate] file-input [-output fileout,-options]";
+        return "Usage : [plugin, -format, install, remove, update, forceupdate -d] file-input [-output fileout,-options String[]]";
     }
 }
