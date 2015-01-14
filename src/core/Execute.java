@@ -36,7 +36,7 @@ public class Execute extends ActionBase {
         try {
             PluginManager pm = PluginManagerFactory.createPluginManager();
             // Setting up the PluginManager from jspf
-            config_strings = this.getConfig();
+            config_strings = getConfig();
             String plugin_from_conf = null;
 
 			/*
@@ -129,5 +129,25 @@ public class Execute extends ActionBase {
                 | FormatNotFoundException e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    /**
+     * Allows you to get the plugin you want if it's installed. Advise : put it in the dependencies
+     *
+     * @param plugin_name String The name of the wanted plugin
+     * @return Corpoplugins The plugin with the given name
+     */
+    public static Corpoplugins thisPlugin(String plugin_name) {
+        // Setting up the PluginManager from jspf
+        PluginManager pm = PluginManagerFactory.createPluginManager();
+        try {
+            configString = getConfig();
+            if (Install.isInstalled(plugin_name))
+                pm.addPluginsFrom(new File(PLUGINDIRECTORY + plugin_name.toLowerCase()).toURI());
+            return pm.getPlugin(Corpoplugins.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

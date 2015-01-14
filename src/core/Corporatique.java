@@ -35,6 +35,9 @@ public class Corporatique {
                 Test.Update();
                 break;
 
+            case 5:
+                System.out.println(Execute.thisPlugin("doc"));
+                break;
             default:
                 System.out.println("Number between 1 and 3");
                 break;

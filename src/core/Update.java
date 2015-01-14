@@ -54,7 +54,7 @@ public class Update extends ActionBase {
                 System.out.print(Messages.getString("flag.install.verification"));
             }
             if (!Install.isInstalled(plugin_specs.name()))
-                throw new PluginNotFoundException(plugin_specs.name()); // if the plugin is already installed
+                throw new PluginNotFoundException(plugin_specs.name()); // if the plugin is NOT installed
             if (debug) {
                 System.out.println(Messages.getString("flag.done"));
                 System.out.print(Messages.getString("flag.install.dependencies"));
@@ -64,7 +64,7 @@ public class Update extends ActionBase {
                 System.out.println(Messages.getString("flag.done"));
                 System.out.println(Messages.getString("flag.update.version"));
             }
-            compareVersions(plugin_specs);
+            compareVersion(plugin_specs);
 
 
         } catch (IOException | PluginNotFoundException | PluginSpecsNotFoundException | PluginDependenciesNotPresentException e) {
@@ -74,7 +74,7 @@ public class Update extends ActionBase {
     }
 
     private static boolean compareVersion(Pluginspecs plugin_specs) {
-        boolean canupdate;
+        boolean canupdate=false;
         try {
             String config_line;
 
