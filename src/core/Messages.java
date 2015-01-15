@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
  * @version 1.0.0
  */
 public class Messages {
-    private static final String BUNDLE_NAME = "core.configfile";
+    private static final String BUNDLE_NAME = "props.configfile";
 
     private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle
             .getBundle(BUNDLE_NAME);
