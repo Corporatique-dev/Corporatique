@@ -11,6 +11,7 @@ import plugins.Corpoplugins;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 /**
  * Will execute the Corpoplugin passed in executePlugin. Will get the plugin
@@ -56,7 +57,7 @@ public class Execute extends ActionBase {
 			 */
 
             if (plugin_name != null) { // if the plugin name is given
-                if (debug) System.out.println(Flags.getString("install.verification"));
+                if (debug) System.out.print(Flags.getString("update.verification"));
                 for (String config_line : config_strings) {
                     if (config_line.contains(PLUGIN + INTERSEPARATOR
                             + plugin_name.toUpperCase() + INTERSEPARATOR)) {
@@ -67,7 +68,7 @@ public class Execute extends ActionBase {
                 if (plugin_from_conf == null)
                     throw new PluginNotFoundException(plugin_name);
             } else if (format != null) { // if the file format is given
-                if (debug) System.out.println(Flags.getString("execute.format"));
+                if (debug) System.out.print(Flags.getString("execute.format"));
 
                 for (String config_line : config_strings) {
                     if (config_line
@@ -83,7 +84,8 @@ public class Execute extends ActionBase {
                     throw new FormatNotFoundException(format);
             } else {
 // is the format nor the plugin is given, searching from file extension
-                if (debug) System.out.println(Flags.getString("execute.format"));
+                if (debug) System.out.print(Flags.getString("execute.format"));
+
                 String[] filesplitted = path_filein.split(FILESPLITTER);
                 if (filesplitted.length <= 1)
                     throw new FormatNotFoundException(filesplitted[0]);
@@ -102,7 +104,7 @@ public class Execute extends ActionBase {
             }
             if (debug) System.out.println(Flags.getString("done"));
 
-            String plugin = plugin_from_conf.split(INTERSEPARATOR)[1];
+            String plugin = plugin_from_conf.split(Pattern.quote(INTERSEPARATOR))[1];
             pm.addPluginsFrom(new File(PLUGINDIRECTORY + plugin).toURI());
 
             Corpoplugins extractor = pm.getPlugin(Corpoplugins.class);
@@ -111,7 +113,7 @@ public class Execute extends ActionBase {
             if (path_filein == null)
                 throw new FileNotFoundException();
 
-            if (debug) System.out.println(Flags.getString("execute.verification"));
+            if (debug) System.out.print(Flags.getString("execute.verification"));
             if (new File(path_filein).isFile())
                 file_in = new File(path_filein);
             else throw new IsNotFileException(path_filein);
@@ -131,7 +133,7 @@ public class Execute extends ActionBase {
             extractor.Load(file_in, file_out);
             System.out.print(Flags.getString("execute.processing"));
             extractor.processExtraction(options);
-            System.out.print(Flags.getString("done"));
+            System.out.println(Flags.getString("done"));
         } catch (FormatNotFoundException | FolderCreationException | IsNotFileException | IOException | PluginNotFoundException e) {
             System.err.println(e.getMessage());
         }

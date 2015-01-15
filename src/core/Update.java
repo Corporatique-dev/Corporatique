@@ -8,6 +8,7 @@ import plugins.Pluginspecs;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 /**
  * @author Fati CHEN
@@ -51,7 +52,7 @@ public class Update extends ActionBase {
                         .toString()); // if there is no annotations
             if (debug) {
                 System.out.println(Flags.getString("done"));
-                System.out.print(Flags.getString("install.verification"));
+                System.out.print(Flags.getString("update.verification"));
             }
             if (!Install.isInstalled(new_plugin_specs.name()))
                 throw new PluginNotFoundException(new_plugin_specs.name()); // if the plugin is NOT installed
@@ -91,10 +92,10 @@ public class Update extends ActionBase {
         try {
             String config_line;
 
-            String[] splitted = Remove.findPluginLine(new_plugin_specs.name()).split(INTERSEPARATOR);
+            String[] splitted = Remove.findPluginLine(new_plugin_specs.name()).split(Pattern.quote(INTERSEPARATOR));
             config_line = splitted[splitted.length - 1];
 
-            String[] version = config_line.split(SEPARATOR)[0].split(FILESPLITTER);
+            String[] version = config_line.split(Pattern.quote(SEPARATOR))[0].split(FILESPLITTER);
             String[] newversion = new_plugin_specs.version().split(FILESPLITTER);
 
 

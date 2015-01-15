@@ -20,7 +20,7 @@ public class Corporatique {
                 "1: install \n" +
                 "2: Execute \n" +
                 "3: Remove \n" +
-                "4: Update \n" );
+                "4: Update");
         int i = sc.nextInt();
         switch (i) {
             case 1:

@@ -17,10 +17,10 @@ public abstract class ActionBase {
     protected static final String TXT = Messages.getString("file.txt");
     protected static final String FILESPLITTER = Pattern.quote(Messages.getString("file.splitter"));
     protected static final String EMPTYSTRING = "";
-    protected static final String INTERSEPARATOR = Pattern.quote(Messages.getString("properties.interseparator"));
+    protected static final String INTERSEPARATOR = Messages.getString("properties.interseparator");
     protected static final String DEFAULT = Messages.getString("properties.default");
     protected static final String PLUGIN = Messages.getString("properties.name");
-    protected static final String SEPARATOR = Pattern.quote(Messages.getString("properties.separator"));
+    protected static final String SEPARATOR = Messages.getString("properties.separator");
     protected static final String PLUGINDIRECTORY = Messages.getString("plugin.directory");
     protected static final File config = new File(Messages.getString("properties.file"));
     protected static String[] configString;
