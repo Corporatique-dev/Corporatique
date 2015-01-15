@@ -1,5 +1,7 @@
 package exceptions;
 
+import core.Flags;
+
 /**
  * Will be triggered if the path of the given file to process is not a file.
  *
@@ -11,6 +13,6 @@ public class IsNotFileException extends Exception {
      * @param message path which is not a file
      */
     public IsNotFileException(String message) {
-        super(System.lineSeparator() + "The given path " + message + " is not a file");
+        super(System.lineSeparator() + Flags.getString("exception.path") + message + Flags.getString("exception.path.file"));
     }
 }

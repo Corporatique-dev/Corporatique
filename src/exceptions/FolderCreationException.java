@@ -1,5 +1,7 @@
 package exceptions;
 
+import core.Flags;
+
 /**
  * Will be triggered if the directory could not be created.
  *
@@ -11,6 +13,6 @@ public class FolderCreationException extends Exception {
      * @param message path to the concerned directory
      */
     public FolderCreationException(String message) {
-        super(System.lineSeparator() + "The given directory " + message + " could not be created");
+        super(System.lineSeparator() + Flags.getString("exception.creation") + message + Flags.getString("exception.creation2"));
     }
 }

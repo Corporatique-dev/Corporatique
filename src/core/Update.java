@@ -65,7 +65,7 @@ public class Update extends ActionBase {
                 System.out.print(Flags.getString("update.version"));
             }
             if (!compareVersion(new_plugin_specs))//if the plugin installed is newer
-                throw new NewerPluginInstalled(new_plugin_specs.name());
+                throw new PluginIsNewer(new_plugin_specs.name());
             if (debug) {
                 System.out.println(Flags.getString("done"));
             }
@@ -73,7 +73,7 @@ public class Update extends ActionBase {
             Install.installPlugin(path_to_update, debug);
 
         } catch (IOException | PluginNotFoundException | PluginSpecsNotFoundException |
-                PluginDependenciesNotPresentException | IsNotFileException | NewerPluginInstalled e) {
+                PluginDependenciesNotPresentException | IsNotFileException | PluginIsNewer e) {
             System.err.println(e.getMessage());
         }
     }
