@@ -1,5 +1,6 @@
 package core;
 
+import exceptions.FolderCreationException;
 import exceptions.FormatNotFoundException;
 import exceptions.IsNotFileException;
 import exceptions.PluginNotFoundException;
@@ -53,7 +54,9 @@ public class Execute extends ActionBase {
 			 * PluginNotFoundException(plugin_name); } else
 			 * ==============================================================
 			 */
+
             if (plugin_name != null) { // if the plugin name is given
+                if (debug) System.out.println(Flags.getString("install.verification"));
                 for (String config_line : config_strings) {
                     if (config_line.contains(PLUGIN + INTERSEPARATOR
                             + plugin_name.toUpperCase() + INTERSEPARATOR)) {
@@ -64,6 +67,8 @@ public class Execute extends ActionBase {
                 if (plugin_from_conf == null)
                     throw new PluginNotFoundException(plugin_name);
             } else if (format != null) { // if the file format is given
+                if (debug) System.out.println(Flags.getString("execute.format"));
+
                 for (String config_line : config_strings) {
                     if (config_line
                             .contains(SEPARATOR + DEFAULT + INTERSEPARATOR
@@ -78,6 +83,7 @@ public class Execute extends ActionBase {
                     throw new FormatNotFoundException(format);
             } else {
 // is the format nor the plugin is given, searching from file extension
+                if (debug) System.out.println(Flags.getString("execute.format"));
                 String[] filesplitted = path_filein.split(FILESPLITTER);
                 if (filesplitted.length <= 1)
                     throw new FormatNotFoundException(filesplitted[0]);
@@ -94,6 +100,7 @@ public class Execute extends ActionBase {
                 if (plugin_from_conf == null)
                     throw new FormatNotFoundException(file_format);
             }
+            if (debug) System.out.println(Flags.getString("done"));
 
             String plugin = plugin_from_conf.split(INTERSEPARATOR)[1];
             pm.addPluginsFrom(new File(PLUGINDIRECTORY + plugin).toURI());
@@ -104,9 +111,11 @@ public class Execute extends ActionBase {
             if (path_filein == null)
                 throw new FileNotFoundException();
 
+            if (debug) System.out.println(Flags.getString("execute.verification"));
             if (new File(path_filein).isFile())
                 file_in = new File(path_filein);
             else throw new IsNotFileException(path_filein);
+            if (debug) System.out.println(Flags.getString("done"));
 
             if (path_fileout == null)
                 file_out = new File(path_filein + TXT);
@@ -114,16 +123,16 @@ public class Execute extends ActionBase {
                 file_out = new File(path_fileout + DEFAULT + TXT);
             else if (!new File(path_fileout).exists()) {
                 file_out = new File(path_fileout);
-                new File(file_out.getParent()).mkdirs();
+                if (!new File(file_out.getParent()).mkdirs())
+                    throw new FolderCreationException(file_out.getParent());
             } else
                 file_out = new File(path_fileout);
 
             extractor.Load(file_in, file_out);
-            System.out.print(Messages.getString("flag.execute.processing"));
+            System.out.print(Flags.getString("execute.processing"));
             extractor.processExtraction(options);
-            System.out.print(Messages.getString("flag.done"));
-        } catch (IsNotFileException | IOException | PluginNotFoundException
-                | FormatNotFoundException e) {
+            System.out.print(Flags.getString("done"));
+        } catch (FormatNotFoundException | FolderCreationException | IsNotFileException | IOException | PluginNotFoundException e) {
             System.err.println(e.getMessage());
         }
     }

@@ -47,33 +47,33 @@ public class Install extends ActionBase {
             plugin_specs = extension.getClass()
                     .getAnnotation(Pluginspecs.class); // Get the Pluginspecs from jar
 
-            if (debug) System.out.print(Messages.getString("flag.install.plugin-specs")
+            if (debug) System.out.print(Flags.getString("install.plugin-specs")
                     + extension.getClass());
             if (plugin_specs == null)
                 throw new PluginSpecsNotFoundException(extension.getClass()
                         .toString()); // if there is no annotations
-            if (debug) System.out.println(Messages.getString("flag.done"));
+            if (debug) System.out.println(Flags.getString("done"));
 
-            if (debug) System.out.print(Messages.getString("flag.install.verification"));
+            if (debug) System.out.print(Flags.getString("install.verification"));
             if (isInstalled(plugin_specs.name()))
                 throw new PluginIsInstalledException(plugin_specs.name()); // if the plugin is already installed
-            if (debug) System.out.println(Messages.getString("flag.done"));
+            if (debug) System.out.println(Flags.getString("done"));
 
-            if (debug) System.out.print(Messages.getString("flag.install.dependencies"));
+            if (debug) System.out.print(Flags.getString("install.dependencies"));
             hasDependencies(plugin_specs); // if all the dependencies are present
-            if (debug) System.out.println(Messages.getString("flag.done"));
+            if (debug) System.out.println(Flags.getString("done"));
 
-            if (debug) System.out.print(Messages.getString("flag.install.copyjar")
+            if (debug) System.out.print(Flags.getString("install.copyjar")
                     + plugin_specs.name().toLowerCase()
-                    + Messages.getString("flag.install.copyjar2"));
+                    + Flags.getString("install.copyjar2"));
             copyPlugintoDirectory(plugin_specs.name(), plugin_path);
-            if (debug) System.out.println(Messages.getString("flag.done"));
+            if (debug) System.out.println(Flags.getString("done"));
 
-            if (debug) System.out.print(Messages.getString("flag.install.adding-properties"));
+            if (debug) System.out.print(Flags.getString("install.adding-properties"));
             addPlugintoConfig(plugin_specs);
-            if (debug) System.out.println(Messages.getString("flag.done"));
+            if (debug) System.out.println(Flags.getString("done"));
 
-            System.out.println(Messages.getString("flag.install.success"));
+            System.out.println(Flags.getString("install.success"));
         } catch (IOException | PluginDependenciesNotPresentException | PluginIsInstalledException
                 | PluginSpecsNotFoundException | IsNotJarException | IsNotFileException e) {
             System.err.println(e.getMessage());

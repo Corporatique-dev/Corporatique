@@ -44,36 +44,36 @@ public class Update extends ActionBase {
             new_plugin_specs = extension.getClass()
                     .getAnnotation(Pluginspecs.class); // Get the Pluginspecs from jar
 
-            if (debug) System.out.print(Messages.getString("flag.install.plugin-specs")
+            if (debug) System.out.print(Flags.getString("install.plugin-specs")
                     + extension.getClass());
             if (new_plugin_specs == null)
                 throw new PluginSpecsNotFoundException(extension.getClass()
                         .toString()); // if there is no annotations
             if (debug) {
-                System.out.println(Messages.getString("flag.done"));
-                System.out.print(Messages.getString("flag.install.verification"));
+                System.out.println(Flags.getString("done"));
+                System.out.print(Flags.getString("install.verification"));
             }
             if (!Install.isInstalled(new_plugin_specs.name()))
                 throw new PluginNotFoundException(new_plugin_specs.name()); // if the plugin is NOT installed
             if (debug) {
-                System.out.println(Messages.getString("flag.done"));
-                System.out.print(Messages.getString("flag.install.dependencies"));
+                System.out.println(Flags.getString("done"));
+                System.out.print(Flags.getString("install.dependencies"));
             }
             Install.hasDependencies(new_plugin_specs); // if all the dependencies are present
             if (debug) {
-                System.out.println(Messages.getString("flag.done"));
-                System.out.print(Messages.getString("flag.update.version"));
+                System.out.println(Flags.getString("done"));
+                System.out.print(Flags.getString("update.version"));
             }
             if (!compareVersion(new_plugin_specs))//if the plugin installed is newer
-                throw new PluginNewerVersionInstalledException(new_plugin_specs.name());
+                throw new NewerPluginInstalled(new_plugin_specs.name());
             if (debug) {
-                System.out.println(Messages.getString("flag.done"));
+                System.out.println(Flags.getString("done"));
             }
             Remove.removePlugin(new_plugin_specs.name(), debug);
             Install.installPlugin(path_to_update, debug);
 
         } catch (IOException | PluginNotFoundException | PluginSpecsNotFoundException |
-                PluginDependenciesNotPresentException | IsNotFileException | PluginNewerVersionInstalledException e) {
+                PluginDependenciesNotPresentException | IsNotFileException | NewerPluginInstalled e) {
             System.err.println(e.getMessage());
         }
     }
