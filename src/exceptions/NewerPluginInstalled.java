@@ -6,7 +6,7 @@ package exceptions;
  * @author Fati CHEN
  * @version 1.0.0
  */
-public class NewerPluginInstalled Exception {
+public class NewerPluginInstalled extends Exception {
     /**
      * @param message the plugin concerned
      */
