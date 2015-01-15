@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
+ * Abstract class, gets the defaults string values from the configuration file.
+ *
  * @author Fati CHEN
  * @version 1.0.0
  */
