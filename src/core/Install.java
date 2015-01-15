@@ -16,6 +16,7 @@ import java.util.Objects;
  * plugins to avoid any collisions between plugins.
  *
  * @author Fati CHEN
+ * @version 1.0.0
  */
 public class Install extends ActionBase {
 

@@ -15,7 +15,6 @@ import java.io.IOException;
  */
 public class Update extends ActionBase {
 
-
     /**
      * Will update the given plugin. Will check if the plugin is already installed, compare its version,
      * if its dependencies are present (will execute a dry run of install for it).
@@ -79,6 +78,13 @@ public class Update extends ActionBase {
         }
     }
 
+    /**
+     * Will compare the versions between the one installed and the one which will replace it.
+     * If the installed one is older, the newer will be installed, else,  the installed will be replaced
+     *
+     * @param new_plugin_specs Pluginspecs the specification of the plugin which will replace the one installed
+     * @return true if the installed is older, false if they are the same or if the installed one is newer.
+     */
     private static boolean compareVersion(Pluginspecs new_plugin_specs) {
         boolean canupdate = false;
         int length;

@@ -8,7 +8,7 @@ import java.util.Scanner;
  * parameters too.
  *
  * @author Fati CHEN
- * @version 1.0
+ * @version 1.0.0
  */
 public class Corporatique {
 

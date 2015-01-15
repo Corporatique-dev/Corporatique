@@ -39,6 +39,12 @@ public class Remove extends ActionBase {
         }
     }
 
+    /**
+     * Will delete the given line from the configuration file.
+     *
+     * @param line String the line which need to be removed
+     * @throws IOException If the configuration file is not found
+     */
     protected static void removeFromProperties(String line) throws IOException {
         String fileString;
         fileString = FileUtils.readFileToString(config);
@@ -46,8 +52,15 @@ public class Remove extends ActionBase {
         FileUtils.writeStringToFile(config, finalString);
     }
 
+    /**
+     * Will find the line from the configuration file for the given plugin name,
+     *
+     * @param plugin String the name of the plugin which line needs to be found, will be converted to UPPERCASE
+     * @return The line which contains the plugin name.
+     * @throws IOException             If the configuration file is not found
+     * @throws PluginNotFoundException if the plugin name is not present in the configuration file
+     */
     protected static String findPluginLine(String plugin) throws IOException, PluginNotFoundException {
-
         for (String line : configString) {
             if (line.contains(PLUGIN + INTERSEPARATOR + plugin.toUpperCase() + INTERSEPARATOR))
                 return line;

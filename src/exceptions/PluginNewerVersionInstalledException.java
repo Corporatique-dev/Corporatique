@@ -7,6 +7,9 @@ package exceptions;
  * @version 1.0.0
  */
 public class PluginNewerVersionInstalledException extends Exception {
+    /**
+     * @param message the plugin concerned
+     */
     public PluginNewerVersionInstalledException(String message) {
         super(System.lineSeparator() + "The plugin" + message + " has a newer version installed");
     }

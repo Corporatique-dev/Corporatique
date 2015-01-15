@@ -7,6 +7,9 @@ package exceptions;
  * @version 1.0.0
  */
 public class PluginDependenciesNotPresentException extends Exception {
+    /**
+     * @param message the plugin concerned
+     */
     public PluginDependenciesNotPresentException(String message) {
         super(System.lineSeparator() + "The dependencies of the plugin " + message + " are not present");
     }
