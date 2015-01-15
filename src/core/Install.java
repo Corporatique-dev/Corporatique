@@ -1,9 +1,6 @@
 package core;
 
-import exceptions.IsNotJarException;
-import exceptions.PluginDependenciesNotPresentException;
-import exceptions.PluginIsInstalledException;
-import exceptions.PluginSpecsNotFoundException;
+import exceptions.*;
 import net.xeoh.plugins.base.PluginManager;
 import net.xeoh.plugins.base.impl.PluginManagerFactory;
 import org.apache.commons.io.FileUtils;
@@ -33,15 +30,18 @@ public class Install extends ActionBase {
     public static void installPlugin(String path_to_install, boolean debug) {
         File plugin_path = new File(path_to_install);
 
-// Setting up the PluginManger from jspf
-        PluginManager pm = PluginManagerFactory.createPluginManager();
-// adding the path to verify
-        pm.addPluginsFrom(plugin_path.toURI());
-// getting the class which implements our plugin interface
-        Corpoplugins extension = pm.getPlugin(Corpoplugins.class);
-        Pluginspecs plugin_specs;
-
         try {
+            if (!plugin_path.exists() || !plugin_path.isFile())
+                throw new IsNotFileException((path_to_install));
+
+            // Setting up the PluginManger from jspf
+            PluginManager pm = PluginManagerFactory.createPluginManager();
+// adding the path to verify
+            pm.addPluginsFrom(plugin_path.toURI());
+// getting the class which implements our plugin interface
+            Corpoplugins extension = pm.getPlugin(Corpoplugins.class);
+            Pluginspecs plugin_specs;
+
             configString = ActionBase.getConfig(); // Get the configuration file
             plugin_specs = extension.getClass()
                     .getAnnotation(Pluginspecs.class); // Get the Pluginspecs from jar
@@ -73,9 +73,8 @@ public class Install extends ActionBase {
             if (debug) System.out.println(Messages.getString("flag.done"));
 
             System.out.println(Messages.getString("flag.install.success"));
-        } catch (IOException | PluginDependenciesNotPresentException
-                | PluginIsInstalledException | PluginSpecsNotFoundException
-                | IsNotJarException e) {
+        } catch (IOException | PluginDependenciesNotPresentException | PluginIsInstalledException
+                | PluginSpecsNotFoundException | IsNotJarException | IsNotFileException e) {
             System.err.println(e.getMessage());
         }
     }

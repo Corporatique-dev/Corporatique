@@ -2,7 +2,7 @@ package exceptions;
 
 /**
  * Will be triggered if the path of the given file to process is not a file.
- * 
+ *
  * @author Fati CHEN
  * @version 1.0.0
  */

@@ -78,7 +78,7 @@ public class Execute extends ActionBase {
                     throw new FormatNotFoundException(format);
             } else {
 // is the format nor the plugin is given, searching from file extension
-                String[] filesplitted = path_filein.split(FILESPITTER);
+                String[] filesplitted = path_filein.split(FILESPLITTER);
                 if (filesplitted.length <= 1)
                     throw new FormatNotFoundException(filesplitted[0]);
                 String file_format = filesplitted[filesplitted.length - 1];

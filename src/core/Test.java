@@ -64,8 +64,8 @@ public class Test {
     public static void Update() {
         System.out.println("-=========-Test Update\n" +
                 "path to plugin to update :");
-        String plugin_to_update = sc.next();
+        String path_to_update = sc.next();
         System.out.print("debug ?");
-        Update.updatePlugin(plugin_to_update, sc.nextBoolean());
+        Update.updatePlugin(path_to_update.replaceAll("\"", ""), sc.nextBoolean());
     }
 }
