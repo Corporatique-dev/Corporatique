@@ -43,6 +43,4 @@ public abstract class ActionBase {
 
         return configs;
     }
-
-
 }
