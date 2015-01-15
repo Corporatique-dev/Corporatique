@@ -13,7 +13,6 @@ import java.util.List;
 public abstract class ActionBase {
     protected static final String TXT = Messages.getString("file.txt");
     protected static final String FILESPITTER = Messages.getString("file.splitter");
-    protected static final String DOUBLEQUOTE = Messages.getString("file.replaceall");
     protected static final String EMPTYSTRING = "";
     protected static final String INTERSEPARATOR = Messages.getString("properties.interseparator");
     protected static final String DEFAULT = Messages.getString("properties.default");

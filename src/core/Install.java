@@ -31,7 +31,7 @@ public class Install extends ActionBase {
      * @see core.Remove
      */
     public static void installPlugin(String path_to_install, boolean debug) {
-        File plugin_path = new File(path_to_install.replaceAll(DOUBLEQUOTE, EMPTYSTRING));
+        File plugin_path = new File(path_to_install);
 
 // Setting up the PluginManger from jspf
         PluginManager pm = PluginManagerFactory.createPluginManager();

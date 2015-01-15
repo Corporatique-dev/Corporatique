@@ -29,7 +29,7 @@ public class Update extends ActionBase {
      * @see core.Remove
      */
     public static void updatePlugin(String path_to_update, boolean debug) {
-        File plugin_path = new File(path_to_update.replaceAll(DOUBLEQUOTE, EMPTYSTRING));
+        File plugin_path = new File(path_to_update);
 
 // Setting up the PluginManger from jspf
         PluginManager pm = PluginManagerFactory.createPluginManager();

@@ -8,6 +8,6 @@ package exceptions;
  */
 public class FormatNotFoundException extends Exception {
     public FormatNotFoundException(String message) {
-        super("The format of the file isn't specified" + message);
+        super("The format is not supported " + message);
     }
 }

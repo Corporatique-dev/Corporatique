@@ -16,7 +16,11 @@ public class Corporatique {
 
     public static void main(String[] args) {
         sc = new Scanner(System.in);
-        System.out.println("Choose between 1 and 3");
+        System.out.println("Choose between : \n" +
+                "1: install \n" +
+                "2: Execute \n" +
+                "3: Remove \n" +
+                "4: Update \n" );
         int i = sc.nextInt();
         switch (i) {
             case 1:
@@ -35,11 +39,8 @@ public class Corporatique {
                 Test.Update();
                 break;
 
-            case 5:
-                System.out.println(Execute.thisPlugin("doc"));
-                break;
             default:
-                System.out.println("Number between 1 and 3");
+                System.out.println("Number between 1 and 4");
                 break;
         }
     }

@@ -1,7 +1,5 @@
 package core;
 
-import plugins.Corpoplugins;
-
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -15,49 +13,59 @@ public class Test {
 
     static Scanner sc = new Scanner(System.in);
 
-    // Test du PDF
-    public static void ClassfromName() {
-        System.out.println("-========-Test Classe from String");
-        try {
-            Class<?> cl = Class.forName("plugins.PDF.PDF");
-            Corpoplugins p = (Corpoplugins) cl.newInstance();
-            System.out.println("--resultat : " + p.toString());
-
-        } catch (ClassNotFoundException | InstantiationException
-                | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void Install() {
-        System.out.println("-=========-Test Installation");
+        System.out.print("-=========-Test Installation\n" +
+                "path to plugin to install :");
         String dir = sc.next();
-        Install.installPlugin(dir, true);
+        System.out.print("debug ?");
+        Install.installPlugin(dir, sc.nextBoolean());
     }
 
     public static void Execute() {
-        System.out.println("-=========-Test Extraction");
-        String file_in = sc.next();
-        String file_out = sc.next();
+        System.out.print("-=========-Test Extraction\n" +
+                "name of the plugin to use :");
+        String plugin_name = sc.next();
+        if (Objects.equals(plugin_name, "null")) plugin_name = null;
+
+        System.out.print("name of format:");
+        String format = sc.next();
+        if (Objects.equals(format, "null")) format = null;
+
+        System.out.print("path to filein:");
+        String filein = sc.next();
+        if (Objects.equals(filein, "null")) filein = null;
+
+        System.out.print("path to filein:");
+        String fileout = sc.next();
+        if (Objects.equals(fileout, "null")) fileout = null;
+
+        System.out.print("debug");
+        boolean debug = sc.nextBoolean();
         sc.close();
-        file_in = file_in.replaceAll("\"", "");
-        file_out = file_out.replaceAll("\"", "");
-        if (Objects.equals(file_out, "null"))
-            file_out = null;
+
+        if (filein !=null) filein = filein.replaceAll("\"", "");
+        if (fileout !=null) fileout = fileout.replaceAll("\"", "");
+
+        if (Objects.equals(plugin_name, "null"))
+            plugin_name = null;
         Execute e = new Execute();
-        e.executePlugin(null, null, file_in, null, null, true);
+        e.executePlugin(plugin_name, format, filein, fileout, null, debug);
 
     }
 
     public static void Remove() {
-        System.out.println("-=========-Test deletion");
+        System.out.print("-=========-Test deletion\n" +
+                "path to plugin to remove :");
         String plugin_to_remove = sc.next();
-        Remove.removePlugin(plugin_to_remove, true);
+        System.out.print("debug ?");
+        Remove.removePlugin(plugin_to_remove, sc.nextBoolean());
     }
 
     public static void Update() {
-        System.out.println("-=========-Test Update");
+        System.out.println("-=========-Test Update\n" +
+                "path to plugin to update :");
         String plugin_to_update = sc.next();
-        Update.updatePlugin(plugin_to_update, true);
+        System.out.print("debug ?");
+        Update.updatePlugin(plugin_to_update, sc.nextBoolean());
     }
 }

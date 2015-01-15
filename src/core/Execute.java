@@ -101,11 +101,8 @@ public class Execute extends ActionBase {
             Corpoplugins extractor = pm.getPlugin(Corpoplugins.class);
 
             File file_out, file_in;
-            if (path_filein != null)
-                path_filein = path_filein.replaceAll(DOUBLEQUOTE, EMPTYSTRING);
-            else throw new FileNotFoundException();
-            if (path_fileout != null)
-                path_fileout = path_fileout.replaceAll(DOUBLEQUOTE, EMPTYSTRING);
+            if (path_filein == null)
+                throw new FileNotFoundException();
 
             if (new File(path_filein).isFile())
                 file_in = new File(path_filein);
