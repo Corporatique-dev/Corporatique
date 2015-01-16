@@ -40,7 +40,7 @@ public class Corporatique {
                 break;
 
             default:
-                System.out.println("Number between 1 and 4");
+                System.out.println(OtherActions.listAll());
                 break;
         }
     }
