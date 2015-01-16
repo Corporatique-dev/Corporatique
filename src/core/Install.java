@@ -155,11 +155,11 @@ public class Install extends ActionBase {
                     formats += ext;
                 }
             } else
-                formats += SEPARATOR + ext.toLowerCase();
+                formats += ext.toLowerCase() + SEPARATOR;
         }
         FileUtils.writeStringToFile(config, PLUGIN + INTERSEPARATOR
                         + plugin_specs.name().toUpperCase() + INTERSEPARATOR
-                        + plugin_specs.version() + formats + System.lineSeparator(),
+                        + plugin_specs.version() + SEPARATOR + formats + System.lineSeparator(),
                 true);
     }
 

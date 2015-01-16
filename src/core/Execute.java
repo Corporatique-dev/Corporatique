@@ -34,11 +34,10 @@ public class Execute extends ActionBase {
      * @param options      String[] [optional] Eventual options of a given plugin;
      */
     public void executePlugin(String plugin_name, String format, String path_filein, String path_fileout, String[] options, boolean debug) {
-        String[] config_strings;
         try {
             PluginManager pm = PluginManagerFactory.createPluginManager();
             // Setting up the PluginManager from jspf
-            config_strings = getConfig();
+            configString = getConfig();
             String plugin_from_conf = null;
 
 			/*
@@ -58,19 +57,17 @@ public class Execute extends ActionBase {
 
             if (plugin_name != null) { // if the plugin name is given
                 if (debug) System.out.print(Flags.getString("update.verification"));
-                for (String config_line : config_strings) {
+                for (String config_line : configString) {
                     if (config_line.contains(PLUGIN + INTERSEPARATOR
                             + plugin_name.toUpperCase() + INTERSEPARATOR)) {
                         plugin_from_conf = config_line;
                         break;
                     }
                 }
-                if (plugin_from_conf == null)
-                    throw new PluginNotFoundException(plugin_name);
             } else if (format != null) { // if the file format is given
                 if (debug) System.out.print(Flags.getString("execute.format"));
 
-                for (String config_line : config_strings) {
+                for (String config_line : configString) {
                     if (config_line
                             .contains(SEPARATOR + DEFAULT + INTERSEPARATOR
                                     + format.toLowerCase() + SEPARATOR)) {
@@ -80,8 +77,6 @@ public class Execute extends ActionBase {
                             + format.toLowerCase() + SEPARATOR))
                         plugin_from_conf = config_line;
                 }
-                if (plugin_from_conf == null)
-                    throw new FormatNotFoundException(format);
             } else {
 // is the format nor the plugin is given, searching from file extension
                 if (debug) System.out.print(Flags.getString("execute.format"));
@@ -90,7 +85,7 @@ public class Execute extends ActionBase {
                 if (filesplitted.length <= 1)
                     throw new FormatNotFoundException(filesplitted[0]);
                 String file_format = filesplitted[filesplitted.length - 1];
-                for (String config_line : config_strings) {
+                for (String config_line : configString) {
                     if (config_line.contains(SEPARATOR + DEFAULT
                             + INTERSEPARATOR + file_format.toLowerCase())) {
                         plugin_from_conf = config_line;
@@ -99,9 +94,9 @@ public class Execute extends ActionBase {
                             + file_format.toLowerCase() + SEPARATOR))
                         plugin_from_conf = config_line;
                 }
-                if (plugin_from_conf == null)
-                    throw new FormatNotFoundException(file_format);
             }
+            if (plugin_from_conf == null)
+                throw new PluginNotFoundException(plugin_name);
             if (debug) System.out.println(Flags.getString("done"));
 
             String plugin = plugin_from_conf.split(Pattern.quote(INTERSEPARATOR))[1];

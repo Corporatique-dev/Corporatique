@@ -41,6 +41,7 @@ public class Corporatique {
 
             default:
                 System.out.println(OtherActions.listAll());
+                System.out.println(OtherActions.pluginDetails("doc", true));
                 break;
         }
     }
