@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  * @author Fati CHEN
  * @version 1.0.0
  */
-public class Remove extends ActionBase {
+public class Delete extends ActionBase {
 
     /**
      * Will remove the given plugin, if the plugin is registered in the configuration file
@@ -21,7 +21,7 @@ public class Remove extends ActionBase {
      * @param plugin_to_remove String The name of the plugin which needs to be removed, will be Converted to UPPERCASE
      * @param debug            boolean Will display the progression of the action if true.
      */
-    public static void removePlugin(String plugin_to_remove, boolean debug) {
+    public static void deletePlugin(String plugin_to_remove, boolean debug) {
         try {
             configString = getConfig();
 

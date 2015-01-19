@@ -128,7 +128,7 @@ public class OtherActions extends ActionBase {
         Corpoplugins extension = pm.getPlugin(Corpoplugins.class);
 
         try {
-            if (Remove.findPluginLine(plugin_name) != null) ;
+            if (Delete.findPluginLine(plugin_name) != null) ;
 
             if (debug) System.out.print(Flags.getString("install.plugin-specs")
                     + extension.getClass());

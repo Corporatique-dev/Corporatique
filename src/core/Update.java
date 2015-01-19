@@ -19,12 +19,12 @@ public class Update extends ActionBase {
     /**
      * Will update the given plugin. Will check if the plugin is already installed, compare its version,
      * if its dependencies are present (will execute a dry run of install for it).
-     * And then use Remove and Install to reinstall the plugin.
+     * And then use Delete and Install to reinstall the plugin.
      *
      * @param path_to_update String The plugin which will be updated.
      * @param debug          boolean Will display the progression of the action if true.
      * @see core.Install
-     * @see core.Remove
+     * @see Delete
      */
     public static void updatePlugin(String path_to_update, boolean debug) {
         File plugin_path = new File(path_to_update);
@@ -70,7 +70,7 @@ public class Update extends ActionBase {
             if (debug) {
                 System.out.println(Flags.getString("done"));
             }
-            Remove.removePlugin(new_plugin_specs.name(), debug);
+            Delete.deletePlugin(new_plugin_specs.name(), debug);
             Install.installPlugin(path_to_update, debug);
 
         } catch (IOException | PluginNotFoundException | PluginSpecsNotFoundException |
@@ -92,7 +92,7 @@ public class Update extends ActionBase {
         try {
             String config_line;
 
-            String[] splitted = Remove.findPluginLine(new_plugin_specs.name()).split(Pattern.quote(INTERSEPARATOR));
+            String[] splitted = Delete.findPluginLine(new_plugin_specs.name()).split(Pattern.quote(INTERSEPARATOR));
             config_line = splitted[splitted.length - 1];
 
             String[] version = config_line.split(Pattern.quote(SEPARATOR))[0].split(FILESPLITTER);

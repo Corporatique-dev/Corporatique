@@ -26,7 +26,7 @@ public class Install extends ActionBase {
      *
      * @param path_to_install String Is the path to the plugin to install
      * @param debug           boolean Will display the progression of the action if true.
-     * @see core.Remove
+     * @see Delete
      */
     public static void installPlugin(String path_to_install, boolean debug) {
         File plugin_path = new File(path_to_install);
