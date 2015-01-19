@@ -22,6 +22,26 @@ import java.util.regex.Pattern;
  */
 public class Execute extends ActionBase {
     /**
+     * Allows you to get the plugin you want if it's installed. Advise : put it in the dependencies
+     *
+     * @param plugin_name String The name of the wanted plugin
+     * @return Corpoplugins The plugin with the given name
+     */
+    public static Corpoplugins thisPlugin(String plugin_name) {
+        // Setting up the PluginManager from jspf
+        PluginManager pm = PluginManagerFactory.createPluginManager();
+        try {
+            configString = getConfig();
+            if (Install.isInstalled(plugin_name))
+                pm.addPluginsFrom(new File(PLUGINDIRECTORY + plugin_name.toLowerCase()).toURI());
+            return pm.getPlugin(Corpoplugins.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * Will process the Text extraction depending on the given parameters.
      * <p>
      * Will get the appropriate Corpoplugin by analysing the user input
@@ -32,6 +52,7 @@ public class Execute extends ActionBase {
      * @param path_filein  String path to the original file
      * @param path_fileout String [optional] Path to the processed file
      * @param options      String[] [optional] Eventual options of a given plugin;
+     * @param debug        true to display debug information
      */
     public void executePlugin(String plugin_name, String format, String path_filein, String path_fileout, String[] options, boolean debug) {
         try {
@@ -132,25 +153,5 @@ public class Execute extends ActionBase {
         } catch (FormatNotFoundException | FolderCreationException | IsNotFileException | IOException | PluginNotFoundException e) {
             System.err.println(e.getMessage());
         }
-    }
-
-    /**
-     * Allows you to get the plugin you want if it's installed. Advise : put it in the dependencies
-     *
-     * @param plugin_name String The name of the wanted plugin
-     * @return Corpoplugins The plugin with the given name
-     */
-    public static Corpoplugins thisPlugin(String plugin_name) {
-        // Setting up the PluginManager from jspf
-        PluginManager pm = PluginManagerFactory.createPluginManager();
-        try {
-            configString = getConfig();
-            if (Install.isInstalled(plugin_name))
-                pm.addPluginsFrom(new File(PLUGINDIRECTORY + plugin_name.toLowerCase()).toURI());
-            return pm.getPlugin(Corpoplugins.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

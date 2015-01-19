@@ -29,7 +29,7 @@ public abstract class ActionBase {
      * Extracts the properties in a [ plugin | format ] structure.
      *
      * @return String[] properties of the configuration file
-     * @throws java.io.IOException
+     * @throws java.io.IOException if there are errors on getting the configfile
      */
     protected static String[] getConfig() throws IOException {
         if (config.createNewFile())

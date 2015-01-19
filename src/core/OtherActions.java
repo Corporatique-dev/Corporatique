@@ -66,8 +66,8 @@ public class OtherActions extends ActionBase {
      *
      * @param plugin_to_set String plugin to set to default
      * @param format_to_set String format to set to default
-     * @return 1 if the plugin is already set to default for this format<br/>
-     * 0 if the plugin was successfully set to default for this format<br/>
+     * @return 1 if the plugin is already set to default for this format ;
+     * 0 if the plugin was successfully set to default for this format ;
      * -1 if the format isn't supported by the plugin, or the format/plugin doesn't exist
      */
 
@@ -115,6 +115,7 @@ public class OtherActions extends ActionBase {
      * Gives the specifications of the given plugin, used in --help
      *
      * @param plugin_name String the name of the plugin.
+     * @param debug       true to display debug information
      * @return The plugin specifications.
      */
     public static String pluginDetails(String plugin_name, boolean debug) {
@@ -128,7 +129,7 @@ public class OtherActions extends ActionBase {
         Corpoplugins extension = pm.getPlugin(Corpoplugins.class);
 
         try {
-            if (Delete.findPluginLine(plugin_name) != null) ;
+            Delete.findPluginLine(plugin_name);
 
             if (debug) System.out.print(Flags.getString("install.plugin-specs")
                     + extension.getClass());
