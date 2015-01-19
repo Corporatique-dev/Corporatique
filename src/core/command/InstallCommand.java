@@ -1,4 +1,4 @@
-package core;
+package core.command;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
@@ -6,14 +6,14 @@ import com.beust.jcommander.Parameters;
 import java.util.List;
 
 /**
- * Has the mission to parse the command line.
+ * Will install the plugin in the given path
  *
  * @author Fati CHEN
  * @version 1.0.0
  */
-@Parameters(commandDescription = "Will update the plugin with the newer one in the given path")
-public class UpdateCommand {
-    @Parameter(description = "path to the plugin to update")
+@Parameters(commandDescription = "Will install the plugin in the given path")
+public class InstallCommand {
+    @Parameter(description = "Path to the corpoplugin File")
     private List<String> plugin;
 
     @Parameter(names = {"-v", "--debug", "-d"}, description = "Debug mode")

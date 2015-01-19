@@ -139,7 +139,7 @@ public class Install extends ActionBase {
      * Will add the given pluginspecs to the configuration file
      *
      * @param plugin_specs Pluginspecs contains the plugin specifications
-     * @throws IOException
+     * @throws IOException if there are errors accessing the configuration file
      */
     private static void addPlugintoConfig(Pluginspecs plugin_specs) throws IOException {
         String formats = EMPTYSTRING;
@@ -168,7 +168,8 @@ public class Install extends ActionBase {
      *
      * @param plugin_name String The name of the plugin
      * @param plugin_path File The path to the plugin
-     * @throws IOException
+     * @throws IOException if there are errors copying the plugin into the folder
+     * @throws exceptions.IsNotJarException if the given path is not a jar
      */
     private static void copyPlugintoDirectory(String plugin_name, File plugin_path)
             throws IOException, IsNotJarException {

@@ -2,6 +2,10 @@ package core;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
+import core.command.DeleteCommand;
+import core.command.ExecuteCommand;
+import core.command.InstallCommand;
+import core.command.UpdateCommand;
 
 import java.util.ArrayList;
 
