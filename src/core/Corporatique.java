@@ -26,6 +26,8 @@ public class Corporatique {
         UpdateCommand ucmd = new UpdateCommand();
         cmd.addCommand("update", ucmd);
 
+        cmd.parse(args);
+
         if ("delete".equals(cmd.getParsedCommand())) {
             if (dcmd.isHelp()) {
                 cmd.usage();
