@@ -49,7 +49,7 @@ public class Corporatique {
                 throw new ParameterException("Excepted one path for update ( has " + ucmd.getPlugin().size() + ")");
             Update.updatePlugin(ucmd.getPlugin().get(0), ucmd.isDebug());
         } else {
-            if (ecmd.isHelp()) {
+            if (ecmd.isHelp() || args.length == 0) {
                 cmd.usage();
             } else if (ecmd.isListall())
                 System.out.println(OtherActions.listAll());
