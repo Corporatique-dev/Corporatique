@@ -26,7 +26,8 @@ public interface Corpoplugins extends Plugin {
      * Loading the selected file in the plugin and sets the output file
      * (security measures)
      *
-     * @param file_in File to load
+     * @param file_in  File to load
+     * @param file_out File to create
      */
     public void Load(File file_in, File file_out);
 
@@ -34,6 +35,7 @@ public interface Corpoplugins extends Plugin {
      * Process the text extraction to file_out with options if necessary
      *
      * @param options eventuals options of the plugin
+     * @throws java.io.IOException When there is an error while writing the file
      */
     public void processExtraction(String[] options) throws IOException;
 }
