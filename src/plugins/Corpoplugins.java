@@ -36,14 +36,4 @@ public interface Corpoplugins extends Plugin {
      * @param options eventuals options of the plugin
      */
     public void processExtraction(String[] options) throws IOException;
-
-    /*-------------------
-     * Getters - Setters - toString
-     */
-    void setFileIn(File file_in);
-
-    void setFileOut(File file_out);
-
-    @Override
-    public String toString();
 }

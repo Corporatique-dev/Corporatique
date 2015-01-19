@@ -16,6 +16,7 @@ public class Flags {
             .getBundle(BUNDLE_NAME);
 
     private Flags() {
+
     }
 
     public static String getString(String key) {
