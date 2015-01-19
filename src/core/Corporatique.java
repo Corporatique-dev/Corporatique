@@ -15,7 +15,8 @@ public class Corporatique {
     private static Scanner sc;
 
     public static void main(String[] args) {
-        sc = new Scanner(System.in);
+
+        /*sc = new Scanner(System.in);
         System.out.println("Choose between : \n" +
                 "1: install \n" +
                 "2: Execute \n" +
@@ -43,7 +44,7 @@ public class Corporatique {
                 System.out.println(OtherActions.listAll());
                 System.out.println(OtherActions.pluginDetails("doc", true));
                 break;
-        }
+        }*/
     }
 
     @Override
