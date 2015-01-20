@@ -159,7 +159,7 @@ public class Install extends ActionBase {
         }
         FileUtils.writeStringToFile(config, PLUGIN + INTERSEPARATOR
                         + plugin_specs.name().toUpperCase() + INTERSEPARATOR
-                        + plugin_specs.version() + SEPARATOR + formats + System.lineSeparator(),
+                        + plugin_specs.version() + formats + SEPARATOR + System.lineSeparator(),
                 true);
     }
 
