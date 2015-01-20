@@ -5,7 +5,6 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.regex.Pattern;
 
 /**
  * Removes a plugin. Will remove the given plugin if he's present in the Coproplugins.properties file
@@ -48,7 +47,7 @@ public class Delete extends ActionBase {
     protected static void removeFromProperties(String line) throws IOException {
         String fileString;
         fileString = FileUtils.readFileToString(config);
-        String finalString = fileString.replaceAll(Pattern.quote(line) + System.lineSeparator(), EMPTYSTRING);
+        String finalString = fileString.replace(line + System.lineSeparator(), EMPTYSTRING);
         FileUtils.writeStringToFile(config, finalString);
     }
 

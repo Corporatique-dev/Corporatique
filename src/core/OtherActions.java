@@ -105,7 +105,7 @@ public class OtherActions extends ActionBase {
                 return 0;
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
 
         return -1;
@@ -129,6 +129,7 @@ public class OtherActions extends ActionBase {
         Corpoplugins extension = pm.getPlugin(Corpoplugins.class);
 
         try {
+            configString = getConfig();
             Delete.findPluginLine(plugin_name);
 
             if (debug) System.out.print(Flags.getString("install.plugin-specs")
@@ -154,7 +155,7 @@ public class OtherActions extends ActionBase {
             }
 
         } catch (PluginSpecsNotFoundException | IOException | PluginNotFoundException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
         return plugin;
     }
