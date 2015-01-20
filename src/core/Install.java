@@ -144,22 +144,29 @@ public class Install extends ActionBase {
     private static void addPlugintoConfig(Pluginspecs plugin_specs) throws IOException {
         String formats = EMPTYSTRING;
         for (String ext : plugin_specs.extensions()) {
+
             if (Objects.equals(ext, EMPTYSTRING))
                 break;
 
             if (configString.length != 0) {
+                boolean setdefault = false;
                 for (String config_line : configString) {
-                    formats += SEPARATOR;
-                    if (config_line.contains(SEPARATOR + ext.toLowerCase()))
-                        formats += DEFAULT + INTERSEPARATOR;
-                    formats += ext;
+                    if (config_line.contains(SEPARATOR + ext.toLowerCase() + SEPARATOR))
+                        setdefault = true;
+                    else if (config_line.contains(SEPARATOR + DEFAULT + INTERSEPARATOR + ext.toLowerCase() + SEPARATOR)) {
+                        setdefault = false;
+                        break;
+                    }
                 }
+                if (setdefault)
+                    formats += DEFAULT + INTERSEPARATOR;
+                formats += ext.toLowerCase() + SEPARATOR;
             } else
                 formats += ext.toLowerCase() + SEPARATOR;
         }
         FileUtils.writeStringToFile(config, PLUGIN + INTERSEPARATOR
                         + plugin_specs.name().toUpperCase() + INTERSEPARATOR
-                        + plugin_specs.version() + formats + SEPARATOR + System.lineSeparator(),
+                        + plugin_specs.version() + SEPARATOR + formats + System.lineSeparator(),
                 true);
     }
 
@@ -168,7 +175,7 @@ public class Install extends ActionBase {
      *
      * @param plugin_name String The name of the plugin
      * @param plugin_path File The path to the plugin
-     * @throws IOException if there are errors copying the plugin into the folder
+     * @throws IOException                  if there are errors copying the plugin into the folder
      * @throws exceptions.IsNotJarException if the given path is not a jar
      */
     private static void copyPlugintoDirectory(String plugin_name, File plugin_path)

@@ -2,10 +2,7 @@ package core;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
-import core.command.DeleteCommand;
-import core.command.ExecuteCommand;
-import core.command.InstallCommand;
-import core.command.UpdateCommand;
+import core.command.*;
 
 /**
  * Main launcher of the program, list the plugins, their usage and options
@@ -18,7 +15,8 @@ import core.command.UpdateCommand;
 public class Corporatique {
     public static void main(String[] args) {
 
-        JCommander cmd = new JCommander();
+        MainCommand mcmd = new MainCommand();
+        JCommander cmd = new JCommander(mcmd);
         cmd.setProgramName("Corporatique");
 
         DeleteCommand dcmd = new DeleteCommand();
@@ -55,19 +53,6 @@ public class Corporatique {
         } else if ("execute".equals(cmd.getParsedCommand())) {
             if (ecmd.isHelp() || args.length == 0) {
                 cmd.usage();
-            } else if (ecmd.isListall())
-                System.out.println(OtherActions.listAll());
-            else if (ecmd.getDetails() != null)
-                System.out.println(OtherActions.pluginDetails(ecmd.getDetails(), ecmd.isDebug()));
-            else if (ecmd.setDefault().size() != 0) {
-                int result = OtherActions.setDefault(ecmd.setDefault().get(0), ecmd.setDefault().get(1));
-                if (result == 0) {
-                    System.out.println(Flags.getString("done"));
-                } else if (result == 1) {
-                    System.out.println(Flags.getString("set.default.already"));
-                } else {
-                    System.out.println(Flags.getString("set.default.fail"));
-                }
             } else {
                 int size = ecmd.getPluginorformat().size();
                 String plugin_name;
@@ -87,7 +72,22 @@ public class Corporatique {
                 e.executePlugin(plugin_name, ecmd.getFormat(), filein, ecmd.getFileout(), table, ecmd.isDebug());
             }
         } else {
-            cmd.usage();
+            if (mcmd.isListall())
+                System.out.println(OtherActions.listAll());
+            else if (mcmd.getDetails() != null)
+                System.out.println(OtherActions.pluginDetails(mcmd.getDetails(), ecmd.isDebug()));
+            else if (mcmd.getChangeDefault().size() != 0) {
+                int result = OtherActions.setDefault(mcmd.getChangeDefault().get(0), mcmd.getChangeDefault().get(1));
+                if (result == 0) {
+                    System.out.println(Flags.getString("done"));
+                } else if (result == 1) {
+                    System.out.println(Flags.getString("set.default.already"));
+                } else {
+                    System.out.println(Flags.getString("set.default.fail"));
+                }
+            } else {
+                cmd.usage();
+            }
         }
     }
 }

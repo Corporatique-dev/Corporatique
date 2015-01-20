@@ -21,7 +21,7 @@ public abstract class ActionBase {
     protected static final String DEFAULT = Messages.getString("properties.default");
     protected static final String PLUGIN = Messages.getString("properties.name");
     protected static final String SEPARATOR = Messages.getString("properties.separator");
-    protected static final String PLUGINDIRECTORY = Messages.getString("plugin.directory");
+    protected static final String PLUGINDIRECTORY = Messages.getString("plugin.directory") + System.getProperty("file.separator");
     protected static final File config = new File(Messages.getString("properties.file"));
     protected static String[] configString;
 

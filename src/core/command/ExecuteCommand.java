@@ -30,15 +30,6 @@ public class ExecuteCommand {
     @Parameter(names = {"-v", "--debug", "-d"}, description = "Debug mode")
     private boolean debug = false;
 
-    @Parameter(names = {"-l", "--listall"}, description = "List all the plugins installed")
-    private boolean listall = false;
-
-    @Parameter(names = {"-m", "--details"}, description = "Details of the plugin")
-    private String details = null;
-
-    @Parameter(names = {"-c", "--change-default"}, description = "Change the default Plugin for a format usage : -c plugin format", arity = 2)
-    private List<String> setDefault = new ArrayList<>();
-
     @Parameter(names = {"-h", "--help"}, help = true)
     private boolean help;
 
@@ -64,17 +55,5 @@ public class ExecuteCommand {
 
     public boolean isHelp() {
         return help;
-    }
-
-    public boolean isListall() {
-        return listall;
-    }
-
-    public String getDetails() {
-        return details;
-    }
-
-    public List<String> setDefault() {
-        return setDefault;
     }
 }
