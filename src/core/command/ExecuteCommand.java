@@ -16,7 +16,7 @@ import java.util.List;
 public class ExecuteCommand {
 
     @Parameter(description = "plugin_to_use and File to extract")
-    private List<String> pluginorformat;
+    private List<String> pluginorformat = new ArrayList<>();
 
     @Parameter(names = {"-f", "--format"}, description = "The output file")
     private String format = null;

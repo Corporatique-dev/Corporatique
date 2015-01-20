@@ -3,6 +3,7 @@ package core.command;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
 @Parameters(commandDescription = "Will update the plugin with the newer one in the given path")
 public class UpdateCommand {
     @Parameter(description = "path to the plugin to update")
-    private List<String> plugin;
+    private List<String> plugin = new ArrayList<>();
 
     @Parameter(names = {"-v", "--debug", "-d"}, description = "Debug mode")
     private boolean debug = false;

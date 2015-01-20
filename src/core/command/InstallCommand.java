@@ -3,6 +3,7 @@ package core.command;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.Parameters;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
 @Parameters(commandDescription = "Will install the plugin in the given path")
 public class InstallCommand {
     @Parameter(description = "Path to the corpoplugin File")
-    private List<String> plugin;
+    private List<String> plugin = new ArrayList<>();
 
     @Parameter(names = {"-v", "-d", "--debug"}, description = "Debug mode")
     private boolean debug = false;
