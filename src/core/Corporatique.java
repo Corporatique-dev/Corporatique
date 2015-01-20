@@ -7,8 +7,6 @@ import core.command.ExecuteCommand;
 import core.command.InstallCommand;
 import core.command.UpdateCommand;
 
-import java.util.ArrayList;
-
 /**
  * Main launcher of the program, list the plugins, their usage and options
  * Redirects to the plugins main, using a config file to do so, sending command
@@ -19,8 +17,8 @@ import java.util.ArrayList;
  */
 public class Corporatique {
     public static void main(String[] args) {
-        ExecuteCommand ecmd = new ExecuteCommand();
-        JCommander cmd = new JCommander(ecmd);
+
+        JCommander cmd = new JCommander();
         cmd.setProgramName("Corporatique");
 
         DeleteCommand dcmd = new DeleteCommand();
@@ -29,6 +27,8 @@ public class Corporatique {
         cmd.addCommand("install", icmd);
         UpdateCommand ucmd = new UpdateCommand();
         cmd.addCommand("update", ucmd);
+        ExecuteCommand ecmd = new ExecuteCommand();
+        cmd.addCommand("execute", ecmd);
 
         cmd.parse(args);
 
@@ -52,14 +52,14 @@ public class Corporatique {
             } else if (ucmd.getPlugin().size() != 1)
                 throw new ParameterException("Excepted one path for update ( has " + ucmd.getPlugin().size() + ")");
             Update.updatePlugin(ucmd.getPlugin().get(0), ucmd.isDebug());
-        } else {
+        } else if ("execute".equals(cmd.getParsedCommand())) {
             if (ecmd.isHelp() || args.length == 0) {
                 cmd.usage();
             } else if (ecmd.isListall())
                 System.out.println(OtherActions.listAll());
             else if (ecmd.getDetails() != null)
                 System.out.println(OtherActions.pluginDetails(ecmd.getDetails(), ecmd.isDebug()));
-            else if (ecmd.setDefault() != new ArrayList<String>()) {
+            else if (ecmd.setDefault().size() != 0) {
                 int result = OtherActions.setDefault(ecmd.setDefault().get(0), ecmd.setDefault().get(1));
                 if (result == 0) {
                     System.out.println(Flags.getString("done"));
@@ -86,6 +86,8 @@ public class Corporatique {
                 Execute e = new Execute();
                 e.executePlugin(plugin_name, ecmd.getFormat(), filein, ecmd.getFileout(), table, ecmd.isDebug());
             }
+        } else {
+            cmd.usage();
         }
     }
 }

@@ -1,6 +1,7 @@
 package core.command;
 
 import com.beust.jcommander.Parameter;
+import com.beust.jcommander.Parameters;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  * @author Fati CHEN
  * @version 1.0.0
  */
+@Parameters(commandDescription = "Allows you to extract the text")
 public class ExecuteCommand {
 
     @Parameter(description = "plugin_to_use and File to extract")
