@@ -72,7 +72,9 @@ public class Corporatique {
                 e.executePlugin(plugin_name, ecmd.getFormat(), filein, ecmd.getFileout(), table, ecmd.isDebug());
             }
         } else {
-            if (mcmd.isListall())
+            if (mcmd.isHelp())
+                cmd.usage();
+            else if (mcmd.isListall())
                 System.out.println(OtherActions.listAll());
             else if (mcmd.getDetails() != null)
                 System.out.println(OtherActions.pluginDetails(mcmd.getDetails(), ecmd.isDebug()));

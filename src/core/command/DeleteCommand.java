@@ -16,7 +16,7 @@ public class DeleteCommand {
     @Parameter(description = "Name of the Corpoplugin to delete")
     private List<String> plugin;
 
-    @Parameter(names = {"-v", "--debug", "-d"}, description = "Debug mode")
+    @Parameter(names = {"-v", "-d", "--debug"}, description = "Debug mode")
     private boolean debug = false;
 
     @Parameter(names = {"-h", "--help"}, help = true)

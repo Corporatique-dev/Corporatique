@@ -18,6 +18,9 @@ public class MainCommand {
     @Parameter(names = {"-c", "--change-default"}, description = "Change the default Plugin for a format usage : -c plugin format", arity = 2)
     private List<String> changeDefault = new ArrayList<>();
 
+    @Parameter(names = {"-h", "--help"}, help = true)
+    private boolean help;
+
     public boolean isListall() {
         return listall;
     }
@@ -28,5 +31,9 @@ public class MainCommand {
 
     public List<String> getChangeDefault() {
         return changeDefault;
+    }
+
+    public boolean isHelp() {
+        return help;
     }
 }

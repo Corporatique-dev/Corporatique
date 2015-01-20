@@ -27,7 +27,7 @@ public class ExecuteCommand {
     @Parameter(names = "-options", description = "Will pass the following parameters to the plugin", variableArity = true)
     private List<String> options = new ArrayList<>();
 
-    @Parameter(names = {"-v", "--debug", "-d"}, description = "Debug mode")
+    @Parameter(names = {"-v", "-d", "--debug"}, description = "Debug mode")
     private boolean debug = false;
 
     @Parameter(names = {"-h", "--help"}, help = true)
