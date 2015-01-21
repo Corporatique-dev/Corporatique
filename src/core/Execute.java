@@ -33,10 +33,10 @@ public class Execute extends ActionBase {
         try {
             configString = getConfig();
             if (Install.isInstalled(plugin_name))
-                pm.addPluginsFrom(new File(PLUGINDIRECTORY + plugin_name.toLowerCase()).toURI());
+                pm.addPluginsFrom(new File(PLUGINDIRECTORY + plugin_name.toLowerCase() + System.getProperty("file.separator")).toURI());
             return pm.getPlugin(Corpoplugins.class);
         } catch (IOException e) {
-            e.getMessage();
+            System.err.println(e.getMessage());
         }
         return null;
     }
@@ -120,8 +120,7 @@ public class Execute extends ActionBase {
                 throw new PluginNotFoundException(plugin_name);
             if (debug) System.out.println(Flags.getString("done"));
             String plugin = plugin_from_conf.split(Pattern.quote(INTERSEPARATOR))[1];
-            File pluginlocation = new File(PLUGINDIRECTORY + plugin.toLowerCase() + System.getProperty("file.separator"));
-            pm.addPluginsFrom(pluginlocation.toURI());
+            pm.addPluginsFrom(new File(PLUGINDIRECTORY + plugin.toLowerCase() + System.getProperty("file.separator")).toURI());
 
             Corpoplugins extractor = pm.getPlugin(Corpoplugins.class);
 

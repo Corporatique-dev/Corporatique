@@ -105,7 +105,7 @@ public class OtherActions extends ActionBase {
                 return 0;
             }
         } catch (IOException e) {
-            e.getMessage();
+            System.err.println(e.getMessage());
         }
 
         return -1;
@@ -124,7 +124,7 @@ public class OtherActions extends ActionBase {
         // Setting up the PluginManger from jspf
         PluginManager pm = PluginManagerFactory.createPluginManager();
 // adding the path to verify
-        pm.addPluginsFrom(new File(PLUGINDIRECTORY + plugin_name).toURI());
+        pm.addPluginsFrom(new File(PLUGINDIRECTORY + plugin_name.toLowerCase() + System.getProperty("file.separator")).toURI());
 // getting the class which implements our plugin interface
         Corpoplugins extension = pm.getPlugin(Corpoplugins.class);
 
@@ -155,7 +155,7 @@ public class OtherActions extends ActionBase {
             }
 
         } catch (PluginSpecsNotFoundException | IOException | PluginNotFoundException e) {
-            e.getMessage();
+            System.err.println(e.getMessage());
         }
         return plugin;
     }

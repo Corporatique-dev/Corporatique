@@ -110,7 +110,7 @@ public class Update extends ActionBase {
                 else if (Integer.parseInt(newversion[i]) < Integer.parseInt(version[i])) return false;
             }
         } catch (IOException | PluginNotFoundException e) {
-            e.getMessage();
+            System.err.println(e.getMessage());
         }
         return canupdate;
     }
