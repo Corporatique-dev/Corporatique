@@ -4,9 +4,9 @@ Corporatique
 Data extraction application ([DMS]). Allows you to extract the text from diffrent filetypes (.pdf, .doc, ...)
 Made in Java, has a plugin management system.
 
-See the source of the plugins already made : [doc]
+See the source of the plugins already made : [Corpoplugins]
 
-The javadoc is available here :[Corporatique](http://corporatique-dev.github.io/Corporatique/)
+The javadoc is available here :[doc](http://corporatique-dev.github.io/Corporatique/)
 
 Get the lasted release clicking on the **Download ZIP** Button
 
