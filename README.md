@@ -93,7 +93,7 @@ Gives the details of a plugin, if the plugin is installed.
 #####Example
 `java -jar Corporatique.jar -m xml` displays the xml plugin details
 
-####``--listall`or `-l`
+####`--listall`or `-l`
 Lists all the installed plugins, their versions and their default and supported formats.
 
 #####Usage, Example
