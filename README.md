@@ -3,6 +3,7 @@ Corporatique
 
 Data extraction application ([DMS]). Allows you to extract the text from diffrent filetypes (.pdf, .doc, ...)
 Made in Java, has a plugin management system.
+
 See the source of the plugins already made : [Corpoplugins]
 
 Get the lasted release clicking on the **Download ZIP** Button
@@ -14,7 +15,7 @@ The basic usage is :
 Use `java -jar Corporatique.jar -h` or `--help` to display the command line options and commands.
 
 ####Commands
-__**`execute`**__
+#####`execute`
 
 Will process extractions with these options:
 
@@ -40,7 +41,7 @@ Will process extractions with these options:
 
 `java -jar Corporatique.jar execute file.pdf -options pagedebut 0 pagefin 5` will send these options to the pdf plugin
 
-__**`install`**__
+#####`install`
 
 Will install the given jar if it's a Corpoplugin.
 
@@ -55,7 +56,7 @@ options:
 
 `java -jar Corporatique.jar install plugin/pdf.jar -d` : installs the pdf plugin and displays the debug information
 
-__**`update`**__
+#####`update`
 
 Will update the plugin if it's a newer version of the installed one.
 
@@ -69,7 +70,7 @@ options:
 
 `java -jar Corporatique.jar update plugin/pdf.jar -d` : updates the pdf plugin and displays the debug information
 
-__**`delete`**__
+#####`delete`
 
 Will delete the plugin with this name, if it's installed.
 
@@ -85,7 +86,7 @@ options:
 `java -jar Corporatique.jar delete pdf -d` : deletes the pdf plugin and displays the debug information
 
 #### Other Options
-__**`--change-default` or `-c`**__
+#####`--change-default` or `-c`
 
 Will change to default the given plugin for the given filetype if the plugin is'nt already set to default and **if the filetype is supported** by the plugin.
 
@@ -96,7 +97,7 @@ Will change to default the given plugin for the given filetype if the plugin is'
 
 `java -jar Corporatique.jar -c openxml docx` sets openxml as the default plugin for docx files.
 
-__**`--details` or `-m`**__
+#####`--details` or `-m`
 
 Gives the details of a plugin, if the plugin is installed.
 
@@ -108,7 +109,7 @@ Gives the details of a plugin, if the plugin is installed.
 
 `java -jar Corporatique.jar -m xml` displays the xml plugin details
 
-__**`--listall`or `-l`**__
+#####``--listall`or `-l`
 
 Lists all the installed plugins, their versions and their default and supported formats.
 
