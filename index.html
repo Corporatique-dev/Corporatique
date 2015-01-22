@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -14,229 +14,281 @@
     <![endif]-->
 
     <title>Corporatique by Corporatique-dev</title>
-  </head>
+</head>
 
-  <body>
-    <header>
-      <div class="inner">
+<body>
+<header>
+    <div class="inner">
         <h1>Corporatique</h1>
-        <h2>Data extraction application (DMS). Allows you to extract the text from diffrent filetypes (.pdf, .doc, ...) </h2>
-        <a href="https://github.com/Corporatique-dev/Corporatique" class="button"><small>View project on</small> GitHub</a>
-      </div>
-    </header>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
+        <h2>Data extraction application (DMS). Allows you to extract the text from diffrent filetypes (.pdf, .doc,
+            ...) </h2>
+        <a href="https://github.com/Corporatique-dev/Corporatique" class="button">
+            <small>View project on</small>
+            GitHub</a>
+    </div>
+</header>
+
+<div id="content-wrapper">
+    <div class="inner clearfix">
         <section id="main-content">
-          <h1>
-<a id="corporatique" class="anchor" href="#corporatique" aria-hidden="true"><span class="octicon octicon-link"></span></a>Corporatique</h1>
+            <h1>
+                <a id="corporatique" class="anchor" href="#corporatique" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Corporatique</h1>
 
-<p>Data extraction application (<a href="http://en.wikipedia.org/wiki/Document_management_system">DMS</a>). Allows you to extract the text from diffrent filetypes (.pdf, .doc, ...)
-Made in Java, has a plugin management system.</p>
+            <p>Data extraction application (<a href="http://en.wikipedia.org/wiki/Document_management_system">DMS</a>).
+                Allows you to extract the text from diffrent filetypes (.pdf, .doc, ...)
+                Made in Java, has a plugin management system.</p>
 
-<p>See the source of the plugins already made : <a href="http://github.com/Corporatique-dev/Corporatique_plugins/">Corpoplugins</a></p>
+            <p>See the source of the plugins already made : <a
+                    href="http://github.com/Corporatique-dev/Corporatique_plugins/">Corpoplugins</a></p>
 
-<p>The javadoc is available here :<a href="http://corporatique-dev.github.io/Corporatique/">doc</a></p>
+            <p>The javadoc is available here :<a href="http://corporatique-dev.github.io/Corporatique/">doc</a></p>
 
-<p>Get the lasted release clicking on the <strong>Download ZIP</strong> Button</p>
+            <p>Get the lasted release clicking on the <strong>Download ZIP</strong> Button</p>
 
-<h2>
-<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Usage</h2>
+            <h2>
+                <a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Basic Usage</h2>
 
-<p>The basic usage is :
-<code>java -jar Corporatique.jar [options] [command] [command options]</code></p>
+            <p>The basic usage is :
+                <code>java -jar Corporatique.jar [options] [command] [command options]</code></p>
 
-<p>Use <code>java -jar Corporatique.jar -h</code> or <code>--help</code> to display the command line options and commands.</p>
+            <p>Use <code>java -jar Corporatique.jar -h</code> or <code>--help</code> to display the command line options
+                and commands.</p>
 
-<h3>
-<a id="commands" class="anchor" href="#commands" aria-hidden="true"><span class="octicon octicon-link"></span></a>Commands</h3>
+            <h3>
+                <a id="commands" class="anchor" href="#commands" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Commands</h3>
 
-<h4>
-<a id="execute" class="anchor" href="#execute" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>execute</code>
-</h4>
+            <h4>
+                <a id="execute" class="anchor" href="#execute" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a><code>execute</code>
+            </h4>
 
-<p>Will process extractions with these options:</p>
+            <p>Will process extractions with these options:</p>
 
-<ul>
-<li>
-<code>-v</code> or <code>-d</code> or <code>--debug</code> will display the process in details.</li>
-<li>
-<code>-f [arg]</code> or <code>--format [arg]</code> will force the extraction of a file with the given filetype
+            <ul>
+                <li>
+                    <code>-v</code> or <code>-d</code> or <code>--debug</code> will display the process in details.
+                </li>
+                <li>
+                    <code>-f [arg]</code> or <code>--format [arg]</code> will force the extraction of a file with the
+                    given filetype
 
-<ul>
-<li>example : <code>java -jar Corporatique.jar execute -f pdf file.doc</code>
-</li>
-</ul>
-</li>
-<li>
-<code>-o [arg]</code> or <code>--output [arg]</code> will put the text in the given file. if this file already exists, it will be overwritten if the path doesn't exist, it will be created.</li>
-<li>
-<code>-options [agrs]</code> will send the options to the plugin when executing it. These options will be processed by the plugin.</li>
-</ul>
+                    <ul>
+                        <li>example : <code>java -jar Corporatique.jar execute -f pdf file.doc</code>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <code>-o [arg]</code> or <code>--output [arg]</code> will put the text in the given file. if this
+                    file already exists, it will be overwritten if the path doesn't exist, it will be created.
+                </li>
+                <li>
+                    <code>-options [agrs]</code> will send the options to the plugin when executing it. These options
+                    will be processed by the plugin.
+                </li>
+            </ul>
 
-<h5>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h5>
+            <h5>
+                <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage
+            </h5>
 
-<p><code>java -jar Corporatique.jar execute [plugin-name] [options] [path-to-file]</code></p>
+            <p><code>java -jar Corporatique.jar execute [plugin-name] [options] [path-to-file]</code></p>
 
-<h5>
-<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h5>
+            <h5>
+                <a id="example" class="anchor" href="#example" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Example</h5>
 
-<p><code>java -jar Corporatique.jar execute pdf file.pdf</code> : Will process the file with the pdf plugin the file can be in another filetype than pdf :</p>
+            <p><code>java -jar Corporatique.jar execute pdf file.pdf</code> : Will process the file with the pdf plugin
+                the file can be in another filetype than pdf :</p>
 
-<p><code>java -jar Corporatique.jar execute pdf file.doc -d</code> : displays the debug information</p>
+            <p><code>java -jar Corporatique.jar execute pdf file.doc -d</code> : displays the debug information</p>
 
-<p><code>java -jar Corporatique.jar execute -format doc file.doc</code> : The same as the example above, but instead of specifying the plugin, we will specify the filetype</p>
+            <p><code>java -jar Corporatique.jar execute -format doc file.doc</code> : The same as the example above, but
+                instead of specifying the plugin, we will specify the filetype</p>
 
-<p><code>java -jar Corporatique.jar execute file.xml</code> you can simply give the file, it will recognise the filetype (can fail if the extensions is changed).</p>
+            <p><code>java -jar Corporatique.jar execute file.xml</code> you can simply give the file, it will recognise
+                the filetype (can fail if the extensions is changed).</p>
 
-<p><code>java -jar Corporatique.jar execute file.pdf -options pagedebut 0 pagefin 5</code> will send these options to the pdf plugin</p>
+            <p><code>java -jar Corporatique.jar execute file.pdf -options pagedebut 0 pagefin 5</code> will send these
+                options to the pdf plugin</p>
 
-<h4>
-<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>install</code>
-</h4>
+            <h4>
+                <a id="install" class="anchor" href="#install" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a><code>install</code>
+            </h4>
 
-<p>Will install the given jar if it's a Corpoplugin.</p>
+            <p>Will install the given jar if it's a Corpoplugin.</p>
 
-<p>options:</p>
+            <p>options:</p>
 
-<ul>
-<li>
-<code>-v</code> or <code>-d</code> or <code>--debug</code> will display the installation details.</li>
-</ul>
+            <ul>
+                <li>
+                    <code>-v</code> or <code>-d</code> or <code>--debug</code> will display the installation details.
+                </li>
+            </ul>
 
-<h5>
-<a id="usage-1" class="anchor" href="#usage-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h5>
+            <h5>
+                <a id="usage-1" class="anchor" href="#usage-1" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Usage</h5>
 
-<p><code>java -jar Corporatique.jar install [path-to-plugin.jar][options]</code></p>
+            <p><code>java -jar Corporatique.jar install [path-to-plugin.jar][options]</code></p>
 
-<h5>
-<a id="example-1" class="anchor" href="#example-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h5>
+            <h5>
+                <a id="example-1" class="anchor" href="#example-1" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Example</h5>
 
-<p><code>java -jar Corporatique.jar install plugin/pdf.jar -d</code> : installs the pdf plugin and displays the debug information</p>
+            <p><code>java -jar Corporatique.jar install plugin/pdf.jar -d</code> : installs the pdf plugin and displays
+                the debug information</p>
 
-<h4>
-<a id="update" class="anchor" href="#update" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>update</code>
-</h4>
+            <h4>
+                <a id="update" class="anchor" href="#update" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a><code>update</code>
+            </h4>
 
-<p>Will update the plugin if it's a newer version of the installed one.</p>
+            <p>Will update the plugin if it's a newer version of the installed one.</p>
 
-<p>options:</p>
+            <p>options:</p>
 
-<ul>
-<li>
-<code>-v</code> or <code>-d</code> or <code>--debug</code> will display the update details.</li>
-</ul>
+            <ul>
+                <li>
+                    <code>-v</code> or <code>-d</code> or <code>--debug</code> will display the update details.
+                </li>
+            </ul>
 
-<h5>
-<a id="usage-2" class="anchor" href="#usage-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h5>
+            <h5>
+                <a id="usage-2" class="anchor" href="#usage-2" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Usage</h5>
 
-<p><code>java -jar Corporatique.jar update [path-to-plugin.jar][options]</code></p>
+            <p><code>java -jar Corporatique.jar update [path-to-plugin.jar][options]</code></p>
 
-<h5>
-<a id="example-2" class="anchor" href="#example-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h5>
+            <h5>
+                <a id="example-2" class="anchor" href="#example-2" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Example</h5>
 
-<p><code>java -jar Corporatique.jar update plugin/pdf.jar -d</code> : updates the pdf plugin and displays the debug information</p>
+            <p><code>java -jar Corporatique.jar update plugin/pdf.jar -d</code> : updates the pdf plugin and displays
+                the debug information</p>
 
-<h4>
-<a id="delete" class="anchor" href="#delete" aria-hidden="true"><span class="octicon octicon-link"></span></a><code>delete</code>
-</h4>
+            <h4>
+                <a id="delete" class="anchor" href="#delete" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a><code>delete</code>
+            </h4>
 
-<p>Will delete the plugin with this name, if it's installed.</p>
+            <p>Will delete the plugin with this name, if it's installed.</p>
 
-<p>options:</p>
+            <p>options:</p>
 
-<ul>
-<li>
-<code>-v</code> or <code>-d</code> or <code>--debug</code> will display the deletion details.</li>
-</ul>
+            <ul>
+                <li>
+                    <code>-v</code> or <code>-d</code> or <code>--debug</code> will display the deletion details.
+                </li>
+            </ul>
 
-<h5>
-<a id="usage-3" class="anchor" href="#usage-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h5>
+            <h5>
+                <a id="usage-3" class="anchor" href="#usage-3" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Usage</h5>
 
-<p><code>java -jar Corporatique.jar delete [plugin-name][options]</code></p>
+            <p><code>java -jar Corporatique.jar delete [plugin-name][options]</code></p>
 
-<h5>
-<a id="example-3" class="anchor" href="#example-3" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h5>
+            <h5>
+                <a id="example-3" class="anchor" href="#example-3" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Example</h5>
 
-<p><code>java -jar Corporatique.jar delete pdf -d</code> : deletes the pdf plugin and displays the debug information</p>
+            <p><code>java -jar Corporatique.jar delete pdf -d</code> : deletes the pdf plugin and displays the debug
+                information</p>
 
-<h3>
-<a id="other-options" class="anchor" href="#other-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Other Options</h3>
+            <h3>
+                <a id="other-options" class="anchor" href="#other-options" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Other Options</h3>
 
-<h4>
-<a id="--change-default-or--c" class="anchor" href="#--change-default-or--c" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-<code>--change-default</code> or <code>-c</code>
-</h4>
+            <h4>
+                <a id="--change-default-or--c" class="anchor" href="#--change-default-or--c" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>
+                <code>--change-default</code> or <code>-c</code>
+            </h4>
 
-<p>Will change to default the given plugin for the given filetype if the plugin is'nt already set to default and <strong>if the filetype is supported</strong> by the plugin.</p>
+            <p>Will change to default the given plugin for the given filetype if the plugin is'nt already set to default
+                and <strong>if the filetype is supported</strong> by the plugin.</p>
 
-<h5>
-<a id="usage-4" class="anchor" href="#usage-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h5>
+            <h5>
+                <a id="usage-4" class="anchor" href="#usage-4" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Usage</h5>
 
-<p><code>java -jar Corporatique.jar -c [plugin filetype]</code></p>
+            <p><code>java -jar Corporatique.jar -c [plugin filetype]</code></p>
 
-<h5>
-<a id="example-4" class="anchor" href="#example-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h5>
+            <h5>
+                <a id="example-4" class="anchor" href="#example-4" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Example</h5>
 
-<p><code>java -jar Corporatique.jar -c openxml docx</code> sets openxml as the default plugin for docx files.</p>
+            <p><code>java -jar Corporatique.jar -c openxml docx</code> sets openxml as the default plugin for docx
+                files.</p>
 
-<h4>
-<a id="--details-or--m" class="anchor" href="#--details-or--m" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-<code>--details</code> or <code>-m</code>
-</h4>
+            <h4>
+                <a id="--details-or--m" class="anchor" href="#--details-or--m" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>
+                <code>--details</code> or <code>-m</code>
+            </h4>
 
-<p>Gives the details of a plugin, if the plugin is installed.</p>
+            <p>Gives the details of a plugin, if the plugin is installed.</p>
 
-<h5>
-<a id="usage-5" class="anchor" href="#usage-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h5>
+            <h5>
+                <a id="usage-5" class="anchor" href="#usage-5" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Usage</h5>
 
-<p><code>java -jar Corporatique.jar -m [plugin]</code></p>
+            <p><code>java -jar Corporatique.jar -m [plugin]</code></p>
 
-<h5>
-<a id="example-5" class="anchor" href="#example-5" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h5>
+            <h5>
+                <a id="example-5" class="anchor" href="#example-5" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Example</h5>
 
-<p><code>java -jar Corporatique.jar -m xml</code> displays the xml plugin details</p>
+            <p><code>java -jar Corporatique.jar -m xml</code> displays the xml plugin details</p>
 
-<h4>
-<a id="--listallor--l" class="anchor" href="#--listallor--l" aria-hidden="true"><span class="octicon octicon-link"></span></a>
-<code>--listall</code>or <code>-l</code>
-</h4>
+            <h4>
+                <a id="--listallor--l" class="anchor" href="#--listallor--l" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>
+                <code>--listall</code>or <code>-l</code>
+            </h4>
 
-<p>Lists all the installed plugins, their versions and their default and supported formats.</p>
+            <p>Lists all the installed plugins, their versions and their default and supported formats.</p>
 
-<h5>
-<a id="usage-example" class="anchor" href="#usage-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage, Example</h5>
+            <h5>
+                <a id="usage-example" class="anchor" href="#usage-example" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Usage, Example</h5>
 
-<p><code>java -jar Corporatique.jar -l</code></p>
+            <p><code>java -jar Corporatique.jar -l</code></p>
 
-<h2>
-<a id="libraries-used" class="anchor" href="#libraries-used" aria-hidden="true"><span class="octicon octicon-link"></span></a>Libraries used</h2>
+            <h2>
+                <a id="libraries-used" class="anchor" href="#libraries-used" aria-hidden="true"><span
+                        class="octicon octicon-link"></span></a>Libraries used</h2>
 
-<p><strong><a href="http://code.google.com/p/jspf/">JSPF</a></strong> </p>
+            <p><strong><a href="http://code.google.com/p/jspf/">JSPF</a></strong></p>
 
-<p><strong><a href="http://jcommander.org/">jCommander</a></strong></p>
+            <p><strong><a href="http://jcommander.org/">jCommander</a></strong></p>
 
-<p><strong><a href="http://commons.apache.org/proper/commons-io/index.html">Commons IO</a></strong></p>
+            <p><strong><a href="http://commons.apache.org/proper/commons-io/index.html">Commons IO</a></strong></p>
         </section>
 
         <aside id="sidebar">
-          <a href="https://github.com/Corporatique-dev/Corporatique/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/Corporatique-dev/Corporatique/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
+            <a href="https://github.com/Corporatique-dev/Corporatique/zipball/master" class="button">
+                <small>Download</small>
+                .zip file
+            </a>
+            <a href="https://github.com/Corporatique-dev/Corporatique/tarball/master" class="button">
+                <small>Download</small>
+                .tar.gz file
+            </a>
 
-          <p class="repo-owner"><a href="https://github.com/Corporatique-dev/Corporatique"></a> is maintained by <a href="https://github.com/Corporatique-dev">Corporatique-dev</a>.</p>
+            <p class="repo-owner"><a href="https://github.com/Corporatique-dev/Corporatique"></a> is maintained by <a
+                    href="https://github.com/Corporatique-dev">Corporatique-dev</a>.</p>
 
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+            <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme
+                by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
         </aside>
-      </div>
     </div>
+</div>
 
-  
-  </body>
+
+</body>
 </html>
